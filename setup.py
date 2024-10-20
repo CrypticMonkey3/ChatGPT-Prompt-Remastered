@@ -9,4 +9,11 @@ def install_packages(packages: List[str]):
 
 
 if __name__ == "__main__":
-    install_packages(["openai"])
+    with open("README.md", "r") as file:
+        content = file.readlines()
+
+    # get a list of modules as required from the README.md, by filtering for lines that start with >, and then
+    # removes unnecessary detail off each of those that start with > .
+    module_requirements = list(map(lambda y: y.split(">")[1].strip(), filter(lambda x: x.startswith(">"), content)))
+
+    install_packages(module_requirements)
