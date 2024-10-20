@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+        <title>{% block title %}{% endblock title %}</title>
+        {% block stylesheet %}{% endblock stylesheet %}
+        {% block scripts %}{% endblock scripts %}
+    </head>
+    <body>
+        <section id="main_section">
+            <header>
+                {% block header %}{% endblock header %}
+            </header>
+            <main>
+                {% block content %}{% endblock content %}
+            </main>
+            <footer>
+                {% block footer %}{% endblock footer %}
+            </footer>
+        </section>
+    </body>
+</html>

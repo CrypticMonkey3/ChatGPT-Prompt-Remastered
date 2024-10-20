@@ -3,12 +3,21 @@ import sys
 from typing import *
 
 
-def install_packages(packages: List[str]):
+def install_packages(packages: List[str]) -> None:
+    """
+    Installs packages as specified in the list.
+    :param List[str] packages: List of package names to install
+    :return: None
+    """
     for package in packages:
         subprocess.check_call([sys.executable, "-m", "pip", "install", package])
 
 
-if __name__ == "__main__":
+def auto_install() -> None:
+    """
+    Automatically installs everything required if this function is run, or is done anyway when main.py is run.
+    :return: None
+    """
     with open("README.md", "r") as file:
         content = file.readlines()
 
@@ -17,3 +26,7 @@ if __name__ == "__main__":
     module_requirements = list(map(lambda y: y.split(">")[1].strip(), filter(lambda x: x.startswith(">"), content)))
 
     install_packages(module_requirements)
+
+
+if __name__ == "__main__":
+    auto_install()
