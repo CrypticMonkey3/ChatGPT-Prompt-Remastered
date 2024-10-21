@@ -5,6 +5,6 @@ import openAI_client
 
 if __name__ == "__main__":
     auto_install()
-    fitness_app = create_app()
-    fitness_app.run("localhost", 8080, True)
+    gpt_remastered = create_app()
+    gpt_remastered.run("localhost", 8080, True)
 

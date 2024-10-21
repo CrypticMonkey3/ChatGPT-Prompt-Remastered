@@ -1,1 +1,16 @@
 {% extends 'base.html' %}
+
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+{% endblock stylesheet %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block footer %}
+    <div class="prompt_container">
+        <input class="prompt_input">
+    </div>
+{% endblock footer %}
