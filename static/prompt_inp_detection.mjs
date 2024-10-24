@@ -47,59 +47,12 @@ async function postPrompt() {
 
         document.getElementById("prompt_input").value = "";
 
-        /*
-        // Code for get Style property: https://stackoverflow.com/questions/6338217/get-a-css-value-with-javascript
-        let element = document.getElementById("prompt_container"),
-            element_style = window.getComputedStyle(element);
-            top_val = element_style.getPropertyValue("top");
-        // -----------------------------------------------------------
-
-        // if the prompt is in the middle of the screen,
-        if (Number(top_val.substring(0, top_val.length - 2)) < window.screen.height / 2) {
-
-            element.setAttribute("style", "top:93%;");
+        if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
+            prompt_moved = !prompt_moved;
+            document.getElementById("prompt_container").setAttribute("style", "top: 93%");  // move the container down.
         }
-        // if the prompt is halfway up the screen (top:50%;) transition it to top: 93%;
-        */
-
-        once(addElementStyle, "prompt_container", "top:93%");  // Doesn't actually call the function once yet.
 
     }).catch(function (error) {
         console.log("Custom Error Message: Failed to POST. Error description is as follows:\n", error);
     })
-}
-
-
-function once(func, ...args) {
-    var wasCalled = false;
-    console.log("hi2");
-    console.log(func);
-    console.log(...args);
-
-    return function(func, ...args) {
-        console.log("h3");
-        console.log(func);
-        if (!wasCalled) {
-            wasCalled = !wasCalled;
-            func(...args);
-        }
-    }(func, ...args);
-}
-
-
-function addElementStyle(elementID, newStyle){
-    console.log("Hi");
-    document.getElementById(elementID).setAttribute("style", newStyle);
-}
-
-
-/**
-* Code received found from https://stackoverflow.com/questions/6338217/get-a-css-value-with-javascript
-* @param {String} elementID The ID of an element we're extracting from.
-* @param {String} attr      The attribute of the style we want to get.
-*/
-function getStyleAttr(elementID, attr) {
-    let element = document.getElementById(elementID);
-    let style = window.getComputedStyle(element);
-    return style.getPropertyValue(attr);
 }
