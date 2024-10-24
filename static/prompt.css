@@ -1,0 +1,38 @@
+.prompt_container {
+    position: fixed;
+    bottom: 7%;
+    width: 100%
+}
+
+.inner_prompt_container {
+    position: relative;
+    display: inline-block;
+    width: 35%;
+    left: 50%;
+    transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
+}
+
+.prompt_input {
+    position: absolute;
+    width: 100%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Moves an element left by 50% of ITSELF */
+    border-radius: 20px;
+    padding: 15px 14px 15px 14px;
+    outline: none;
+    z-index: 1;
+}
+
+.submit_prompt_input {
+    position: absolute;
+    border-radius: 20px;
+    width: 35px;
+    height: 35px;
+    transform: translateY(-50%);
+    right: 3%;
+    z-index: 2;
+    background-image: url(Arrow.png);
+    background-repeat: no-repeat;
+    background-size: 30%;
+    background-position: center;
+}

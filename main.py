@@ -7,4 +7,3 @@ if __name__ == "__main__":
     auto_install()
     gpt_remastered = create_app()
     gpt_remastered.run("localhost", 8080, True)
-

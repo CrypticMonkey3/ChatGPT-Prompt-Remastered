@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block stylesheet %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='prompt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
 {% endblock stylesheet %}
 
@@ -9,8 +9,11 @@
 Home
 {% endblock title %}
 
-{% block footer %}
+{% block content %}
     <div class="prompt_container">
-        <input class="prompt_input">
+        <div class="inner_prompt_container">
+            <input class="prompt_input" type="text" placeholder="Message ChatGPT">
+            <input class="submit_prompt_input" type="button">
+        </div>
     </div>
-{% endblock footer %}
+{% endblock content %}
