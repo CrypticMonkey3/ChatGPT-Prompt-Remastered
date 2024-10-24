@@ -3,3 +3,16 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+html, body {
+    height: 100%;
+}
+
+#main_section {
+    height: 100%;
+}
+
+main {
+    display: flex;
+    height: 100%;
+}

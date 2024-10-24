@@ -3,17 +3,25 @@
 {% block stylesheet %}
     <link rel="stylesheet" href="{{ url_for('static', filename='prompt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
 {% endblock stylesheet %}
+
+{% block scripts %}
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='prompt_inp_detection.mjs') }}"></script>
+{% endblock scripts %}
 
 {% block title %}
 Home
 {% endblock title %}
 
 {% block content %}
-    <div class="prompt_container">
-        <div class="inner_prompt_container">
-            <input class="prompt_input" type="text" placeholder="Message ChatGPT">
-            <input class="submit_prompt_input" type="button">
+    <div id="sidebar">
+
+    </div>
+    <div id="prompt_container">
+        <div id="inner_prompt_container">
+            <input id="prompt_input" type="text" placeholder="Message ChatGPT">
+            <input id="submit_prompt_input" type="button">
         </div>
     </div>
 {% endblock content %}

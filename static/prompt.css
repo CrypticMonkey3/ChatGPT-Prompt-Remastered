@@ -1,10 +1,10 @@
-.prompt_container {
-    position: fixed;
-    bottom: 7%;
-    width: 100%
+#prompt_container {
+    position: relative;
+    top: 93%;
+    flex: 1;
 }
 
-.inner_prompt_container {
+#inner_prompt_container {
     position: relative;
     display: inline-block;
     width: 35%;
@@ -12,7 +12,7 @@
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
 }
 
-.prompt_input {
+#prompt_input {
     position: absolute;
     width: 100%;
     left: 50%;
@@ -23,7 +23,7 @@
     z-index: 1;
 }
 
-.submit_prompt_input {
+#submit_prompt_input {
     position: absolute;
     border-radius: 20px;
     width: 35px;
