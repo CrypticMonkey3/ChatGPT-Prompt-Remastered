@@ -1,6 +1,5 @@
 from flask_interface import create_app
 from setup import auto_install
-import openAI_client
 
 
 if __name__ == "__main__":

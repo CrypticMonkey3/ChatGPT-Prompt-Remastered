@@ -14,33 +14,43 @@ class OpenAIClient:
         self.__client = OpenAI(api_key=self.__api_key)
 
         try:
-            self.__client.models.list()
+            self.__client.models.list()  # tries getting a list of all the models the user has access to, in their key.
 
         except AuthenticationError:
             print("\033[31mInvalid API Key, ensure the key provided in API_Key.txt is correct.\033[0m")
 
-    def generate_text(self) -> \
+        self.__temperature = 0.7
+        self.__stream = False
+        self.__response_style = "You are a helpful assistant"
+
+    def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
         """
         Create a human-like response to a prompt.
         Code was accessed from: https://platform.openai.com/docs/quickstart
         :return: Either a successful response or none.
         """
-        response: Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None] = None
+        response: Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], str] = ""
         try:
             response = self.__client.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="davinci-002",  # You need a subscription to use this model
                 messages=[
                     {
                         "role": "system",
-                        "content": "You are a helpful assistant"
+                        "content": self.__response_style  # How the system should respond as
                     },
                     {
                         "role": "user",
-                        "content": "Write a haiku about recursion in programming."
+                        "content": prompt  # user prompt
                     }
-                ]
+                ],
+                temperature=self.__temperature,
+                stream=self.__stream  # whether we want it to have the response like ChatGPT, where bits of a response come in
+                # intervals (True), or all at once. Use below if stream=True
+                # for chunk in response:
+                #     print(chunk.choices[0].text, end="")
             )
+            print(response.choices[0].message)
 
         except APIConnectionError:
             print("\033[31mAPI Connection Error! The server could not be reached.\033[0m")
@@ -49,9 +59,6 @@ class OpenAIClient:
             print("\033[31mRate Limit Error! You need to top up your credits or hit your monthly spend.\033[0m")
 
         # Other errors that may show up, please see: https://platform.openai.com/docs/guides/error-codes/api-errors
-
-        if response is not None:
-            print(response.choices[0].message)
 
         return response
 

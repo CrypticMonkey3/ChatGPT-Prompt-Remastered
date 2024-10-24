@@ -1,15 +1,14 @@
-#prompt_container {
-    position: relative;
-    top: 93%;
+#main_container {
     flex: 1;
 }
 
-#inner_prompt_container {
+#prompt_container {
     position: relative;
-    display: inline-block;
-    width: 35%;
+    top: 50%;
+    width: 50%;
     left: 50%;
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
+    transition: top 2s ease 0s;
 }
 
 #prompt_input {
