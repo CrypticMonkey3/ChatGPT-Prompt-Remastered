@@ -20,6 +20,14 @@
     padding: 15px 14px 15px 14px;
     outline: none;
     z-index: 1;
+    transition: box-shadow linear 1s;
+    border: none;
+}
+
+#prompt_input:hover {
+    border-color: #5b150d;
+    box-shadow: 0px 0px 20px #872716;
+    transition: box-shadow linear 0.3s;
 }
 
 #submit_prompt_input {

@@ -8,20 +8,27 @@
 
 {% block scripts %}
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='prompt_inp_detection.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='toggle_sidebar.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
-Home
+ChatGPT Remastered
 {% endblock title %}
 
 {% block content %}
     <div id="sidebar">
-
+        <input id="sidebar_closer_opener" type="button" onclick="sidebarToggle();">
     </div>
     <div id="main_container">
         <div id="prompt_container">
             <input id="prompt_input" type="text" placeholder="Message ChatGPT">
             <input id="submit_prompt_input" type="button">
+        </div>
+        <div id="Settings">
+            <!-- Contain things like theme changes: background image, background colour, fonts, etc... -->
+        </div>
+        <div id="modelSelection">
+            <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
         </div>
     </div>
 

@@ -14,6 +14,7 @@ window.onload = function() {
 /**
 * Function for when anyone presses ENTER in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
+* @return {null} nothing
 */
 function submitPrompt(event) {
     const prompt_value = document.getElementById("prompt_input").value;
@@ -29,6 +30,10 @@ function submitPrompt(event) {
 }
 
 
+/**
+* Executes a POST request to /prompt-response function in pages.py containing whatever value was in the prompt.
+* @return {null} nothing
+*/
 async function postPrompt() {
     await fetch(  // await until the POST has been sent, and received, in pages.py
         "/prompt-response",
@@ -49,7 +54,7 @@ async function postPrompt() {
 
         if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
             prompt_moved = !prompt_moved;
-            document.getElementById("prompt_container").setAttribute("style", "top: 93%");  // move the container down.
+            document.getElementById("prompt_container").setAttribute("style", "top: 88%");  // move the container down.
         }
 
     }).catch(function (error) {
