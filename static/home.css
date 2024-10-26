@@ -22,4 +22,17 @@ main {
     position: relative;
     display: flex;
     justify-content: space-between;
+    height: 5%;
+    align-items: center;
+}
+
+#options_bar ul {
+    position: relative;
+    display: flex;
+}
+
+#options_bar li {
+    display: inline-block;
+    margin-right: 30px;
+
 }

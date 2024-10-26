@@ -21,6 +21,7 @@
 
 #sidebar_opener {  /* Override some properties to fit the opener button */
     position: absolute;
-    left: 1%;
+    left: auto;
+    top: auto;
     opacity: 1;
 }
