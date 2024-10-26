@@ -17,3 +17,9 @@ main {
     display: flex;
     height: 100%;
 }
+
+#options_bar {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}

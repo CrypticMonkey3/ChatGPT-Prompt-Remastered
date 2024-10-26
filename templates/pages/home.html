@@ -21,21 +21,36 @@ ChatGPT Remastered
         <button id="sidebar_closer" type="button" onclick="sidebarToggle();"></button>
     </div>
     <div id="main_container">
-        <button id="sidebar_opener" type="button" onclick="sidebarToggle();"></button>
+        <div id="options_bar">  <!-- This act like a header for the main_container -->
+            <ul>
+                <li>
+                    <button id="sidebar_opener" type="button" onclick="sidebarToggle();"></button>
+                </li>
+                <li>
+                    <div id="modelSelector">
+                        <button id="modelDropdown" type="button">ChatGPT</button>
+                        <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
+                        <div id="modelSelection">
+
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <!-- New Chat -->
+                </li>
+                <li>
+                    <div id="Settings">
+                        <!-- Contain things like theme changes: background image, background colour, fonts, etc... -->
+                    </div>
+                </li>
+            </ul>
+        </div>
+
         <div id="prompt_container">
             <input id="prompt_input" type="text" placeholder="Message ChatGPT">
             <button id="submit_prompt_input" type="button"></button>
         </div>
-        <div id="Settings">
-            <!-- Contain things like theme changes: background image, background colour, fonts, etc... -->
-        </div>
-        <div id="modelSelector">
-            <button id="modelDropdown" type="button">ChatGPT</button>
-            <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
-            <div id="modelSelection">
 
-            </div>
-        </div>
     </div>
 
 {% endblock content %}

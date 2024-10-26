@@ -20,7 +20,7 @@
 }
 
 #sidebar_opener {  /* Override some properties to fit the opener button */
-    position: relative;
+    position: absolute;
     left: 1%;
     opacity: 1;
 }

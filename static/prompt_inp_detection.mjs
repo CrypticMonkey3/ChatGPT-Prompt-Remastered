@@ -54,7 +54,7 @@ async function postPrompt() {
 
         if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
             prompt_moved = !prompt_moved;
-            document.getElementById("prompt_container").setAttribute("style", "top: 88%");  // move the container down.
+            document.getElementById("prompt_container").setAttribute("style", "top: 83%");  // move the container down.
         }
 
     }).catch(function (error) {
