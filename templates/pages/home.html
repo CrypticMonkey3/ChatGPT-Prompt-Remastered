@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='prompt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='modelDropdown.css') }}">
 {% endblock stylesheet %}
 
 {% block scripts %}
@@ -17,18 +18,23 @@ ChatGPT Remastered
 
 {% block content %}
     <div id="sidebar">
-        <input id="sidebar_closer_opener" type="button" onclick="sidebarToggle();">
+        <button id="sidebar_closer" type="button" onclick="sidebarToggle();"></button>
     </div>
     <div id="main_container">
+        <button id="sidebar_opener" type="button" onclick="sidebarToggle();"></button>
         <div id="prompt_container">
             <input id="prompt_input" type="text" placeholder="Message ChatGPT">
-            <input id="submit_prompt_input" type="button">
+            <button id="submit_prompt_input" type="button"></button>
         </div>
         <div id="Settings">
             <!-- Contain things like theme changes: background image, background colour, fonts, etc... -->
         </div>
-        <div id="modelSelection">
+        <div id="modelSelector">
+            <button id="modelDropdown" type="button">ChatGPT</button>
             <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
+            <div id="modelSelection">
+
+            </div>
         </div>
     </div>
 

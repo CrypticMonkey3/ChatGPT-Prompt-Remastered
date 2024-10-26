@@ -1,0 +1,24 @@
+#modelSelector {
+    position: relative;
+    display: inline-block; /* Width, height, top should be the same as the sidebar opener. */
+    height: 30px;
+    bottom: 2.1%;
+    left: 5%;
+    transition: left 0.2s ease 0s;
+}
+
+#modelDropdown {
+    position: absolute;
+    padding: 0px 10px;
+    width: auto;
+    height: 100%;
+}
+
+#modelSelection {
+    position: absolute;
+    top: 110%;
+    width: 100px;
+    height: 100px;
+    background-color: #000000;
+    border-radius: 5px;
+}
