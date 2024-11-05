@@ -1,14 +1,14 @@
 #modelSelector {
-    position: absolute;
+    position: relative;
     height: 30px;
-    transition: left 0.2s ease 0s;
-
+    transition: right 0.35s ease 0s;
+    right: 0;
     /* NEED TO SPACE THE LI ELEMENTS APART FROM EACH OTHER */
 }
 
 #modelDropdown {
-    position: absolute;
-    padding: 0px 10px;
+    position: relative;
+    padding: 0 10px;
     width: auto;
     height: 100%;
 }

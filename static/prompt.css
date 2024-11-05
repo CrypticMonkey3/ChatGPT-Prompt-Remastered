@@ -4,7 +4,7 @@
 
 #prompt_container {
     position: relative;
-    top: 50%;
+    top: 44.4%;  /* To make it centred vertically: 50% - options_bar.top */
     width: 50%;
     left: 50%;
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
@@ -26,7 +26,7 @@
 
 #prompt_input:hover {
     border-color: #5b150d;
-    box-shadow: 0px 0px 20px #872716;
+    box-shadow: 0 0 20px #872716;
     transition: box-shadow linear 0.3s;
 }
 

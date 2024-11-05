@@ -21,18 +21,25 @@ main {
 #options_bar {
     position: relative;
     display: flex;
-    justify-content: space-between;
-    height: 5%;
-    align-items: center;
+    height: 6.6%;
+    margin-left: 0.9%;  /* Width of sidebar as in toggle_sidebar.mjs (18%) of sidebar_closer.left (5%) */
 }
 
 #options_bar ul {
-    position: relative;
-    display: flex;
+    display: grid;
+    grid: 'sidebarOpener modelSelector';
+    column-gap: 10px;
 }
 
 #options_bar li {
-    display: inline-block;
-    margin-right: 30px;
+    list-style: none;
+    align-content: center;
+}
 
+#options_bar li #sidebar_opener {
+    grid-area: sidebarOpener;
+}
+
+#options_bar li #modelSelector {
+    grid-area: modelSelector;
 }

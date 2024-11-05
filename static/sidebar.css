@@ -1,6 +1,6 @@
 #sidebar {
     position: relative;
-    width: 0%;
+    width: 0;
     height: 100%;
     background-color: #2d2a33;
     border-right: 1px solid;
@@ -8,19 +8,19 @@
 }
 
 #sidebar_closer, #sidebar_opener {
-    position: absolute;
+    position: relative;
     width: 33px;
     height: 30px;
     border-radius: 10px;
     top: 1.5%;
     left: 5%;
     opacity: 0;
-    transition: opacity 0.1s linear 0s;
+    transition: opacity 0.085s linear 0s;
     /* TRANSITION BACKGROUND COLOUR AS SIDEBAR TRANSITIONS */
 }
 
 #sidebar_opener {  /* Override some properties to fit the opener button */
-    position: absolute;
+    position: relative;
     left: auto;
     top: auto;
     opacity: 1;
