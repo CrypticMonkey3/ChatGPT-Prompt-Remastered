@@ -16,7 +16,11 @@
     left: 5%;
     opacity: 0;
     transition: opacity 0.085s linear 0s;
-    /* TRANSITION BACKGROUND COLOUR AS SIDEBAR TRANSITIONS */
+
+    background-size: 120%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #2a272d;
 }
 
 #sidebar_opener {  /* Override some properties to fit the opener button */
@@ -24,4 +28,9 @@
     left: auto;
     top: auto;
     opacity: 1;
+    background-image: url(hamburger_icon.png);
+}
+
+#sidebar_closer {
+    background-image: url(X_icon.png);
 }
