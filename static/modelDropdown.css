@@ -11,6 +11,12 @@
     padding: 0 10px;
     width: auto;
     height: 100%;
+
+    border: 2px outset;
+    border-radius: 10px;
+    background-color: #2a272d;
+    color: #ffffff;
+    cursor: pointer;
 }
 
 #modelSelection {

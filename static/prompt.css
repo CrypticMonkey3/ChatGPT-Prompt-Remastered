@@ -21,7 +21,14 @@
     outline: none;
     z-index: 1;
     transition: box-shadow linear 1s;
-    border: none;
+    border: 2px outset #111111;
+    background-color: #64606b;
+    color: #ffffff;
+}
+
+#prompt_container ::placeholder{
+    color: white;
+    opacity: 0.75;
 }
 
 #prompt_input:hover {
@@ -39,6 +46,7 @@
     right: 3%;
     z-index: 2;
     background-image: url(Arrow.png);
+    background-color: #434047;  /* Same as sidebar opener and closer */
     background-repeat: no-repeat;
     background-size: 30%;
     background-position: center;
