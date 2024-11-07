@@ -2,13 +2,14 @@
     position: relative;
     display: flex;
     height: 6.6%;
-    margin-left: 0.9%;  /* Width of sidebar as in toggle_sidebar.mjs (18%) of sidebar_closer.left (5%) */
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 #options_bar ul {
     display: grid;
     grid: 'sidebarOpener modelSelector';
     column-gap: 10px;
+    margin-left: 0.9%;  /* Width of sidebar as in toggle_sidebar.mjs (18%) of sidebar_closer.left (5%) */
 }
 
 #options_bar li {

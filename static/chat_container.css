@@ -1,17 +1,24 @@
 #chat_container {
     display: flex;
-    height: 83%;
+    height: 93.4%;  /* 100% - options_bar.height */
 }
 
-#chat {
-    flex: 1;
-    overflow-y: auto;  /* If messages go beyond the chat space, add a vertical scroll automatically. */
-    /* Add some padding here */
-}
-
-#chat_header {
+#chat_sidebar {
     width: 20%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.25);
+}
+
+#chat_body {
+    flex: 1;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#chat_display {
+    overflow-y: auto;  /* If messages go beyond the chat space, add a vertical scroll automatically. */
+    height: 83%;
+    scrollbar-color: #4a4a4a #1e1e1e;  /* Makes the scrollbar colour go dark (Firefox) */
 }
 
 .user_prompt, .llm_response {
@@ -22,10 +29,12 @@
 
 .user_prompt {
     justify-content: right;
+    margin-right: 14%;
 }
 
 .llm_response {
     justify-content: left;  /* Don't really need this, but for continuity I'll add it */
+    margin-left: 14%;
 }
 
 .user_prompt span, .llm_response span {

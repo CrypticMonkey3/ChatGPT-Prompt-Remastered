@@ -68,10 +68,10 @@ function displayMessage(class_name, message, chat_area){
 * @return {null} nothing
 */
 async function postPrompt() {
-    const chat_area = document.getElementById("chat");
+    const chat_area = document.getElementById("chat_display");
 
     if (!chat_area) {
-        console.log("Custom error! Failed to get Element with ID: 'chat'.");
+        console.log("Custom error! Failed to get Element with ID: 'chat_display'.");
         return null;
     }
 
@@ -96,7 +96,7 @@ async function postPrompt() {
 
         if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
             prompt_moved = !prompt_moved;
-            document.getElementById("prompt_container").setAttribute("style", "top: 93%");  // move the container down.
+            document.getElementById("prompt_container").setAttribute("style", "top: 90%");  // move the container down.
         }
 
     }).catch(function (error) {

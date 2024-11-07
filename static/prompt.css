@@ -3,7 +3,7 @@
 }
 
 #prompt_container {
-    position: absolute;  /* This container's position won't be affected by surrounding containers */
+    position: relative;
     top: 50%;
     width: 50%;
     left: 50%;
@@ -32,8 +32,8 @@
 }
 
 #prompt_input:hover {
-    border-color: #5b150d;
-    box-shadow: 0 0 20px #872716;
+    border-color: rgb(13, 10, 63);
+    box-shadow: 0 0 10px #380d65;
     transition: box-shadow linear 0.3s;
 }
 

@@ -40,23 +40,24 @@ ChatGPT Remastered
             </ul>
         </div>
         <div id="chat_container">
-            <div id="chat_header"></div>
-            <div id="chat">
-                <div class="user_prompt">
-                    <span>Lorem ipsum</span>
-                </div>
-                <div class="llm_response">
-                    <img alt="m" src="{{ url_for('static', filename='DALL·E 2024-11-07 15.36.52 - ChatGPT\'s visual description of itself.png') }}">
-                    <span>Lorem ipsum</span>
+            <div id="chat_sidebar"></div>
+            <div id="chat_body">
+                <div id="prompt_container">
+                    <input id="prompt_input" type="text" placeholder="Message ChatGPT">
+                    <button id="submit_prompt_input" type="button"></button>
                 </div>
 
+                <div id="chat_display">
+                    <div class="user_prompt">
+                        <span>Lorem ipsum</span>
+                    </div>
+                    <div class="llm_response">
+                        <img alt="m" src="{{ url_for('static', filename='DALL·E 2024-11-07 15.36.52 - ChatGPT\'s visual description of itself.png') }}">
+                        <span>Lorem ipsum</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="prompt_container">
-            <input id="prompt_input" type="text" placeholder="Message ChatGPT">
-            <button id="submit_prompt_input" type="button"></button>
-        </div>
-
     </div>
 
 {% endblock content %}
