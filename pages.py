@@ -21,8 +21,15 @@ def home() -> str:
 def prompt_response() -> Tuple[str, int]:
     if request.method == "POST":
         prompt = request.get_json()
+
         print(prompt)
-        # response = OPENAI_CLIENT.generate_text("")
-        return "", 200
+
+        # response = OPENAI_CLIENT.generate_text("")  # Get a response from the LLM based on the input.
+
+        with open(OPENAI_CLIENT.conversation, "a") as file:
+            file.write(f"Prompt: {prompt.get('prompt', 'ERROR!')}\n")  # write prompt to chat history
+            # write response to chat history
+
+        return "", 200  # the response should be returned here
 
     raise NotImplementedError("GET for /prompt-response has not been implemented.")

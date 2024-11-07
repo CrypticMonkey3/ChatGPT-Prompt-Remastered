@@ -24,7 +24,7 @@ function submitPrompt(event) {
     *       - OR if the event was a click on the submit button
     *       - ALL THE WHILE checking that the prompt is not empty
     */
-    if (((event.type == "keyup" && event.key == "Enter") || event.type == "mousedown") && prompt_value != "") {
+    if (((event.type === "keyup" && event.key === "Enter") || event.type === "mousedown") && prompt_value != "") {
         postPrompt();
     }
 }

@@ -23,6 +23,12 @@ class OpenAIClient:
         self.__stream = False
         self.__response_style = "You are a helpful assistant"
 
+        self.__conversation = "New Chat"  # if user selects a conversation or is in one, this will be set to that.
+
+    @property
+    def conversation(self) -> str:
+        return self.__conversation
+
     def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
         """
