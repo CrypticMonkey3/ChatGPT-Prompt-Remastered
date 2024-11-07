@@ -5,6 +5,7 @@
 
 #chat {
     flex: 1;
+    overflow-y: auto;  /* If messages go beyond the chat space, add a vertical scroll automatically. */
 }
 
 #chat_header {

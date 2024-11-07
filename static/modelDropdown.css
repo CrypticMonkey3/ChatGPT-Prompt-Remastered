@@ -3,7 +3,6 @@
     height: 30px;
     transition: right 0.35s ease 0s;
     right: 0;
-    /* NEED TO SPACE THE LI ELEMENTS APART FROM EACH OTHER */
 }
 
 #modelDropdown {
