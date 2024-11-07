@@ -1,0 +1,41 @@
+#chat_container {
+    display: flex;
+    height: 83%;
+}
+
+#chat {
+    flex: 1;
+}
+
+#chat_header {
+    width: 20%;
+    height: 100%;
+}
+
+.user_prompt, .llm_response {
+    position: relative;
+    padding: 10px;
+    display: flex;
+}
+
+.user_prompt {
+    justify-content: right;
+}
+
+.llm_response {
+    justify-content: left;  /* Don't really need this, but for continuity I'll add it */
+}
+
+.user_prompt span, .llm_response span {
+    position: relative;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+.user_prompt span {
+    background-color: red;
+}
+
+.llm_response span {
+    background-color: blue;
+}
