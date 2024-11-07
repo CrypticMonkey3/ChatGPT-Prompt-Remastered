@@ -6,6 +6,7 @@
 #chat {
     flex: 1;
     overflow-y: auto;  /* If messages go beyond the chat space, add a vertical scroll automatically. */
+    /* Add some padding here */
 }
 
 #chat_header {
@@ -39,4 +40,11 @@
 
 .llm_response span {
     background-color: blue;
+}
+
+.llm_response img {
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    margin-right: 7px;
 }

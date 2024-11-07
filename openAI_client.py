@@ -1,3 +1,4 @@
+import openai
 from openai import OpenAI, APIConnectionError, RateLimitError, AuthenticationError
 from openai.resources.chat import completions
 from typing import *
@@ -39,7 +40,7 @@ class OpenAIClient:
         response: Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], str] = ""
         try:
             response = self.__client.chat.completions.create(
-                model="davinci-002",  # You need a subscription to use this model
+                model="gpt-4o-mini",  # You need a subscription to use this model
                 messages=[
                     {
                         "role": "system",
@@ -63,6 +64,9 @@ class OpenAIClient:
 
         except RateLimitError:
             print("\033[31mRate Limit Error! You need to top up your credits or hit your monthly spend.\033[0m")
+
+        except openai.NotFoundError as e:
+            print(f"\033[31mCheck the model you are using, it may not exist...\nFull error code:\n{e}\033[0m")
 
         # Other errors that may show up, please see: https://platform.openai.com/docs/guides/error-codes/api-errors
 
