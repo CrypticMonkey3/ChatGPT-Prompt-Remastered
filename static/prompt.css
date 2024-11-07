@@ -3,8 +3,8 @@
 }
 
 #prompt_container {
-    position: relative;
-    top: 44.4%;  /* To make it centred vertically: 50% - options_bar.top */
+    position: absolute;  /* This container's position won't be affected by surrounding containers */
+    top: 50%;
     width: 50%;
     left: 50%;
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
@@ -51,4 +51,8 @@
     background-size: 30%;
     background-position: center;
     cursor: pointer;
+}
+
+#submit_prompt_input:hover {
+    background-color: #2B282DFF;
 }

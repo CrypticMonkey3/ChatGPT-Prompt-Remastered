@@ -24,6 +24,10 @@
     background-color: #2a272d;
 }
 
+#sidebar_closer:hover, #sidebar_opener:hover {
+    background-color: #353538;
+}
+
 #sidebar_opener {  /* Override some properties to fit the opener button */
     position: relative;
     left: auto;

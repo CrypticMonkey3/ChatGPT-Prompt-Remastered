@@ -43,3 +43,17 @@ main {
 #options_bar li #modelSelector {
     grid-area: modelSelector;
 }
+
+#chat_container {
+    display: flex;
+    height: 83%;
+}
+
+#chat {
+    flex: 1;
+}
+
+#chat_header {
+    width: 20%;
+    height: 100%;
+}
