@@ -54,7 +54,7 @@ function displayMessage(class_name, message, chat_area){
     profile_pic.alt = `${class_name} profile picture`;
     profile_pic.src = class_name === "llm_response" ? "/static/DALL·E 2024-11-07 15.36.52 - ChatGPT\'s visual description of itself.png" : "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.miraheze.org%2Fwindowswallpaperwiki%2Fthumb%2F6%2F67%2FUser_(Windows_10_1507-1909).png%2F200px-User_(Windows_10_1507-1909).png&f=1&nofb=1&ipt=72cdee34bbd2bdd678ccbac1239f3677541ae92826b54bf6cbfc3decf79f3f73&ipo=images";
 
-
+    chat_div.appendChild(profile_pic);  // Make the img element of the profile picture be part of the div
     chat_div.appendChild(message_content);  // Make the span element the child of the div.
     doc_frag.appendChild(chat_div);  // Add the div element to the document fragment.
 

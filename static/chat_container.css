@@ -25,35 +25,44 @@
     position: relative;
     padding: 10px;
     display: flex;
+    margin-right: 14%;
+    margin-left: 14%;
 }
 
 .user_prompt {
     justify-content: right;
-    margin-right: 14%;
+    flex-direction: row-reverse;
 }
 
 .llm_response {
-    justify-content: left;  /* Don't really need this, but for continuity I'll add it */
-    margin-left: 14%;
+    justify-content: left;
 }
 
 .user_prompt span, .llm_response span {
     position: relative;
     border-radius: 10px;
-    padding: 5px;
+    padding: 8px 11px 8px 12px;
+    color: #cccccc;
 }
 
 .user_prompt span {
-    background-color: red;
+    background-color: rgba(133, 119, 119, 0.25);
 }
 
 .llm_response span {
-    background-color: blue;
+    background-color: transparent;
+}
+
+.llm_response img, .user_prompt img {
+    border-radius: 50%;
+    height: 34px;
+    width: 34px;
 }
 
 .llm_response img {
-    border-radius: 50%;
-    height: 30px;
-    width: 30px;
     margin-right: 7px;
+}
+
+.user_prompt img {
+    margin-left: 7px;
 }
