@@ -50,6 +50,11 @@ function displayMessage(class_name, message, chat_area){
     let message_content = document.createElement("span");
     message_content.textContent = message;
 
+    let profile_pic = document.createElement("img");
+    profile_pic.alt = `${class_name} profile picture`;
+    profile_pic.src = class_name === "llm_response" ? "/static/DALL·E 2024-11-07 15.36.52 - ChatGPT\'s visual description of itself.png" : "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fstatic.miraheze.org%2Fwindowswallpaperwiki%2Fthumb%2F6%2F67%2FUser_(Windows_10_1507-1909).png%2F200px-User_(Windows_10_1507-1909).png&f=1&nofb=1&ipt=72cdee34bbd2bdd678ccbac1239f3677541ae92826b54bf6cbfc3decf79f3f73&ipo=images";
+
+
     chat_div.appendChild(message_content);  // Make the span element the child of the div.
     doc_frag.appendChild(chat_div);  // Add the div element to the document fragment.
 
@@ -89,10 +94,13 @@ async function postPrompt() {
                 "prompt": document.getElementById("prompt_input").value
             })
         }
-    ).then(function (response) {  // When a response is made
-        console.log(response.text());
+    ).then(function (response){
+        return response.text();  // done so that the body of the response isn't consumed.
 
-        // Display response.
+    }).then(function (response) {  // When a response is made
+        console.log(response);
+
+        displayMessage("llm_response", response, chat_area);
 
         if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
             prompt_moved = !prompt_moved;
