@@ -8,4 +8,5 @@ function sidebarToggle() {
     document.getElementById("sidebar_closer").setAttribute("style", `opacity: ${sidebar_active ? 1 : 0};`);
     document.getElementById("sidebar_opener").setAttribute("style", `opacity: ${sidebar_active ? 0 : 1};`);
     document.getElementById("modelSelector").setAttribute("style", `right: ${sidebar_active ? 60 : 0}%;`);
+    // Change Grid layout of #options_bar to be only the model Selector when sidebar is active.
 }

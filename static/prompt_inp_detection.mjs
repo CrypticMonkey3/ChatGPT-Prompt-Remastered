@@ -82,7 +82,7 @@ async function postPrompt() {
 
     displayMessage("user_prompt", document.getElementById("prompt_input").value, chat_area);
 
-    await fetch(  // await until the POST has been sent, and received, in pages.py
+    await fetch(  // wait until the POST has been sent, and received, in pages.py
         "/prompt-response",
         {
             method: "POST",

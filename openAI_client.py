@@ -30,6 +30,10 @@ class OpenAIClient:
     def conversation(self) -> str:
         return self.__conversation
 
+    @property
+    def model_list(self):
+        return [model.id for model in self.__client.models.list()]
+
     def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
         """

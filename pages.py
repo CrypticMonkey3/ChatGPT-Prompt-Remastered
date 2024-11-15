@@ -41,3 +41,12 @@ def prompt_response() -> Tuple[str, int]:
         file.write(f"Response: {response_content}\n")# write response to chat history
 
     return response_content, 200  # the response should be returned here
+
+
+@bp.route("/get-available-models", methods=["POST"])
+def get_available_models() -> Tuple[str, int]:
+    """
+    Function to call in order to get all available models in the API key.
+    :return: Tuple[str, int]
+    """
+    return " ".join(OPENAI_CLIENT.model_list), 200

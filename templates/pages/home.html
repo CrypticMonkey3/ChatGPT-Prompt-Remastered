@@ -12,6 +12,7 @@
 {% block scripts %}
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='prompt_inp_detection.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='toggle_sidebar.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='dropdownAppear.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
@@ -30,17 +31,9 @@ ChatGPT Remastered
                 </li>
                 <li>
                     <div id="modelSelector">
-                        <button id="modelDropdown" type="button">ChatGPT</button>
+                        <button id="modelDropdown" type="button" onclick="showSelection();">ChatGPT</button>
                         <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
-                        <div id="modelSelection">
-                            <div>
-                                <span>Title</span>
-                                <p>Sidenote</p>
-                            </div>
-                            <div><p>A</p></div>
-                            <button type="button">Title<br  /> Sidenote
-                            </button>
-                        </div>
+                        <div id="modelSelection"></div>
                     </div>
                 </li>
             </ul>
