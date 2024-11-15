@@ -33,7 +33,13 @@ ChatGPT Remastered
                         <button id="modelDropdown" type="button">ChatGPT</button>
                         <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
                         <div id="modelSelection">
-
+                            <div>
+                                <span>Title</span>
+                                <p>Sidenote</p>
+                            </div>
+                            <div><p>A</p></div>
+                            <button type="button">Title<br  /> Sidenote
+                            </button>
                         </div>
                     </div>
                 </li>
@@ -47,15 +53,7 @@ ChatGPT Remastered
                     <button id="submit_prompt_input" type="button"></button>
                 </div>
 
-                <div id="chat_display">
-                    <div class="user_prompt">
-                        <span>Lorem ipsum</span>
-                    </div>
-                    <div class="llm_response">
-                        <img alt="m" src="{{ url_for('static', filename='DALL·E 2024-11-07 15.36.52 - ChatGPT\'s visual description of itself.png') }}">
-                        <span>Lorem ipsum</span>
-                    </div>
-                </div>
+                <div id="chat_display"></div>
             </div>
         </div>
     </div>
