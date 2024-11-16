@@ -13,6 +13,8 @@
     flex: 1;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.1);
+    background-image: url(robot_silhouette_black_and_white.png);
+    background-repeat: repeat;
 }
 
 #chat_display {
