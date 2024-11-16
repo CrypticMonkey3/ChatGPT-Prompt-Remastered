@@ -31,7 +31,8 @@
     top: 20%;
     display: flex;  /* This element will be stretch wide and tall as the contents in it, min is the closest container */
     flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 2px solid #0e0e0e;
     border-radius: 5px;
     opacity: 0;
     transition: opacity 0.2s ease 0s;
@@ -45,7 +46,15 @@
     margin: 5px 10px;
     position: relative;
     border-radius: 17px;
+    border-color: #727272;
+    border-style: solid;
     padding: 7px 10px 7px 10px;
     text-align: left;
+    background-color: rgba(51, 49, 49, 0.5);
+    color: #cccccc;
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
+}
+
+#modelSelection button:hover {
+    background-color: rgba(80, 80, 80, 0.5);
 }
