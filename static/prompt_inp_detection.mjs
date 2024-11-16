@@ -2,16 +2,6 @@ var prompt_moved = false;
 
 
 /**
-* When the page loads with this javaScript function, add an event listener to the prompt.
-* @return {null}    nothing
-*/
-window.onload = function() {
-    document.getElementById("prompt_input").addEventListener("keyup", submitPrompt);
-    document.getElementById("submit_prompt_input").addEventListener("mousedown", submitPrompt);
-}
-
-
-/**
 * Function for when anyone presses ENTER in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
 * @return {null} nothing
@@ -69,18 +59,37 @@ function displayMessage(class_name, message, chat_area){
 
 
 /**
+ * Creates a reference to a particular input, for ease of recall.
+ * @param {string} div_id The ID of the div element to jump to.
+ * @param {string} message The placeholder value which leads to a particular prompt.
+ * @param {HTMLElement} chat_sidebar The sidebar to add these references to.
+ */
+function displayMessageReference(div_id, message, chat_sidebar) {
+    let doc_frag = document.createDocumentFragment();
+
+    let anchor_tag = document.createElement("a");
+    anchor_tag.href = `#${div_id}`;
+    anchor_tag.textContent = message;
+
+    doc_frag.appendChild(anchor_tag);
+    chat_sidebar.appendChild(doc_frag);
+}
+
+
+/**
 * Executes a POST request to /prompt-response function in pages.py containing whatever value was in the prompt.
 * @return {null} nothing
 */
 async function postPrompt() {
     const chat_area = document.getElementById("chat_display");
+    const prompt_value = document.getElementById("prompt_input").value
 
-    if (!chat_area) {
-        console.log("Custom error! Failed to get Element with ID: 'chat_display'.");
+    if (!chat_area || !prompt_value) {
+        console.log("Custom error! Failed to get Element with ID: 'chat_display' or 'prompt_input'.");
         return null;
     }
 
-    displayMessage("user_prompt", document.getElementById("prompt_input").value, chat_area);
+    displayMessage("user_prompt", prompt_value, chat_area);
 
     await fetch(  // wait until the POST has been sent, and received, in pages.py
         "/prompt-response",
@@ -91,7 +100,7 @@ async function postPrompt() {
                 "Content-Type": "Application/json"
             },
             body: JSON.stringify({  // JSON payload
-                "prompt": document.getElementById("prompt_input").value
+                "prompt": prompt_value
             })
         }
     ).then(function (response){
@@ -100,7 +109,18 @@ async function postPrompt() {
     }).then(function (response) {  // When a response is made
         console.log(response);
 
-        displayMessage("llm_response", response, chat_area);
+        // display response onto the main chat area.
+        let response_id = response.split(" ", 1)[0];
+        let model_response = response.substring(response_id.length + 1, response.length);
+
+        displayMessage("llm_response", model_response, chat_area);
+
+        // edit the last user prompt and add the id onto it. This is so we can quickly get jump to this element.
+        let user_prompts = document.getElementsByClassName("user_prompt");
+        user_prompts[user_prompts.length - 1].id = response_id;
+
+        // create reference to prompt into the chat sidebar.
+        displayMessageReference(response_id, prompt_value, document.getElementById("chat_sidebar"));
 
         if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
             prompt_moved = !prompt_moved;

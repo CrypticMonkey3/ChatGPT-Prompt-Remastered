@@ -24,7 +24,7 @@ class OpenAIClient:
         self.__stream = False
         self.__response_style = "You are a helpful assistant"
 
-        self.__conversation = "New Chat"  # if user selects a conversation or is in one, this will be set to that.
+        self.__conversation = "New Chat.txt"  # if user selects a conversation or is in one, this will be set to that.
 
     @property
     def conversation(self) -> str:

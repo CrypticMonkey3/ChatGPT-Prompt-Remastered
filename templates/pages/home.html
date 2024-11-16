@@ -13,6 +13,7 @@
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='prompt_inp_detection.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='toggle_sidebar.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='dropdownAppear.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='onWindowLoadFunctions.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
@@ -44,7 +45,9 @@ ChatGPT Remastered
             </ul>
         </div>
         <div id="chat_container">
-            <div id="chat_sidebar"></div>
+            <div id="chat_sidebar">
+                <a href="#chat_body">Something</a>
+            </div>
             <div id="chat_body">
                 <div id="prompt_container">
                     <input id="prompt_input" type="text" placeholder="Message ChatGPT">
@@ -52,6 +55,8 @@ ChatGPT Remastered
                 </div>
 
                 <div id="chat_display"></div>
+
+                <span>ChatGPT can make mistakes and create hallucinations. Use the resource smartly.</span>
             </div>
         </div>
     </div>

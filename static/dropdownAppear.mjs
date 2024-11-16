@@ -1,13 +1,4 @@
 /**
- * When the window loads up, fetch and create elements of available models to choose from.
- * @returns {Promise<void>}
- */
-window.onload = async function() {
-    await fetchAvailableModels();
-}
-
-
-/**
  * Create the element containing the option for a particular model.
  * @param {string} model_name The name of the model.
  * @param {HTMLElement} parent_element The element to add the document fragment onto.

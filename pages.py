@@ -24,8 +24,8 @@ def prompt_response() -> Tuple[str, int]:
     :return: Tuple[str, int]
     """
     prompt = request.get_json()
-    response = OPENAI_CLIENT.generate_text(prompt["prompt"])  # Get a response from the LLM based on the input.
-    response_content = response.choices[0].message.content
+    # response = OPENAI_CLIENT.generate_text(prompt["prompt"])  # Get a response from the LLM based on the input.
+    # response_content = response.choices[0].message.content
 
     # print(response)
     # print("*"*100)
@@ -36,11 +36,14 @@ def prompt_response() -> Tuple[str, int]:
     # print(response.choices[0].message.content)
     # Record conversation into basic txt file.
 
-    with open(OPENAI_CLIENT.conversation, "a") as file:
+    with open(OPENAI_CLIENT.conversation, "r+") as file:
         file.write(f"Prompt: {prompt['prompt']}\n")  # write prompt to chat history
-        file.write(f"Response: {response_content}\n")# write response to chat history
+        # file.write(f"Response: {response_content}\n")# write response to chat history
+        lines = file.readlines()
 
-    return response_content, 200  # the response should be returned here
+    print(lines)
+
+    return f"{len(lines) // 2} {prompt['prompt']}", 200  # the response should be returned here
 
 
 @bp.route("/get-available-models", methods=["POST"])
