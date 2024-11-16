@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='prompt.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='home.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='sidebar.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='modelDropdown.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='optionBarHeaders.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='options_bar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='chat_container.css') }}">
 {% endblock stylesheet %}
@@ -34,6 +34,11 @@ ChatGPT Remastered
                         <button id="modelDropdown" type="button" onclick="showSelection();">ChatGPT</button>
                         <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
                         <div id="modelSelection"></div>
+                    </div>
+                </li>
+                <li>
+                    <div id="modelTuningSelector">
+                        <button id="modelTuningDropdown" type="button">Tuning</button>
                     </div>
                 </li>
             </ul>

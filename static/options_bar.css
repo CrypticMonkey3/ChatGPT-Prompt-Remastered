@@ -7,7 +7,7 @@
 
 #options_bar ul {
     display: flex;
-    grid: 'sidebarOpener modelSelector';
+    grid: 'sidebarOpener modelDropdown modelTuningDropdown';
     column-gap: 10px;
     margin-left: 0.9%;  /* Width of sidebar as in toggle_sidebar.mjs (18%) of sidebar_closer.left (5%) */
 }
@@ -21,6 +21,10 @@
     grid-area: sidebarOpener;
 }
 
-#options_bar li #modelSelector {
-    grid-area: modelSelector;
+#options_bar li #modelSelector #modelDropdown {
+    grid-area: modelDropdown;
+}
+
+#options_bar li #modelTuningSelector #modelTuningDropdown {
+    grid-area: modelTuningDropdown;
 }

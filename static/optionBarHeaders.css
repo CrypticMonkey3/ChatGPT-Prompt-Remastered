@@ -1,11 +1,11 @@
-#modelSelector {
+#modelSelector, #modelTuningSelector {
     position: relative;
     height: 30px;
     transition: right 0.35s ease 0s;
     right: 0;
 }
 
-#modelDropdown {
+#modelDropdown, #modelTuningDropdown {
     position: relative;
     padding: 0 10px;
     width: auto;
@@ -18,17 +18,18 @@
     cursor: pointer;
 }
 
-#modelDropdown:hover {
+#modelDropdown:hover, #modelTuningDropdown:hover {
     background-color: #353538;  /* Same as the sidebar opener and closer */
 }
 
-#modelDropdown:active {
+#modelDropdown:active, #modelTuningDropdown:active {
     border-style: inset;
 }
 
 #modelSelection {
-    position: relative;
-    top: 20%;
+    position: absolute;  /* So it's relative to the container and doesn't affect the grid layout. */
+    width: max-content;  /* Make each button have the same length as the largest model name. */
+    top: 120%;
     display: flex;  /* This element will be stretch wide and tall as the contents in it, min is the closest container */
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.4);
