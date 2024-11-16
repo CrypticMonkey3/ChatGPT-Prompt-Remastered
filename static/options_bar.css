@@ -6,7 +6,7 @@
 }
 
 #options_bar ul {
-    display: grid;
+    display: flex;
     grid: 'sidebarOpener modelSelector';
     column-gap: 10px;
     margin-left: 0.9%;  /* Width of sidebar as in toggle_sidebar.mjs (18%) of sidebar_closer.left (5%) */
