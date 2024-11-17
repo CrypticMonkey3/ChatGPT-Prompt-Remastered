@@ -7,7 +7,7 @@
     display: flex;
     width: 20%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.25);
+    background-color: #141316;
     flex-direction: column;
     padding-top: 10px;
     border-right: 1px solid #000000;
@@ -16,22 +16,27 @@
 #chat_sidebar .reference_block {
     margin: 5px 10px 5px 10px;
     border: 1px outset rgba(255, 255, 255, 0.18);
-    border-radius: 35px;
+    border-radius: 10px;
     padding: 7px 14px 7px 14px;
     display: flex;
     position: relative;
 }
 
 #chat_sidebar .reference_block:hover {
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: #100f12;
     border: 1px outset rgba(255, 255, 255, 0.7);
 }
 
-#chat_sidebar .reference_block:focus {
+#chat_sidebar .reference_block:hover > .reference_end {  /* When hovering over the reference block element, change the following about the reference_end class. */
+    background-image: linear-gradient(to right, transparent, #100f12);  /* Change it to the new background-color */
+}
+
+#chat_sidebar .reference_block:active {
     border: 1px inset rgba(255, 255, 255, 0.7);
 }
 
 #chat_sidebar .message_reference {
+    white-space: nowrap;  /* Even if a piece of text naturally goes over several lines, it's forced into one. */
     overflow-x: hidden;
 }
 
@@ -42,9 +47,11 @@
 
 #chat_sidebar .reference_end{
     position: absolute;  /* Is absolute to the reference block class - which allows overlaps */
-    right: 0;
-    width: 28px;
+    background-image: linear-gradient(to right, transparent, #141316);
+    right: 5%;
+    width: 40px;
     height: 18px;  /* The same height as the text in the 'message_reference' */
+    pointer-events: none;  /* This element has no events on click, so any clicks on it pass through it to the underlying element */
 }
 
 #chat_body {

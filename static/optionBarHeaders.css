@@ -4,6 +4,7 @@
     transition: right 0.35s ease 0s;
     right: 0;
     display: flex;
+    z-index: 10;  /* Ensures it's on top of any item underneath it */
 }
 
 #modelDropdown, #modelTuningDropdown {
