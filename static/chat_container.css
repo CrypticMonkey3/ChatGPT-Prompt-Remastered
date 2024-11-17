@@ -19,6 +19,7 @@
     border-radius: 35px;
     padding: 7px 14px 7px 14px;
     display: flex;
+    position: relative;
 }
 
 #chat_sidebar .reference_block:hover {
@@ -40,9 +41,9 @@
 }
 
 #chat_sidebar .reference_end{
-    position: relative;
-    left: -17px;
-    width: 18px;
+    position: absolute;  /* Is absolute to the reference block class - which allows overlaps */
+    right: 0;
+    width: 28px;
     height: 18px;  /* The same height as the text in the 'message_reference' */
 }
 
