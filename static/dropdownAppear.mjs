@@ -47,6 +47,12 @@ async function fetchAvailableModels() {
  */
 async function showSelection() {
     let modelSelection = document.getElementById("modelSelection");
+
     // whether the opacity is an empty string or not, it will always become a number between 0 & 1.
-    modelSelection.style.opacity = parseInt(`0${modelSelection.style.opacity}`) ? "0" : "1";
+    if (modelSelection.style.visibility === "visible") {
+        modelSelection.setAttribute("style", "opacity: 0; visibility: collapse;")
+        return;
+    }
+
+    modelSelection.setAttribute("style", "opacity: 1; visibility: visible;")
 }

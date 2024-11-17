@@ -4,9 +4,46 @@
 }
 
 #chat_sidebar {
+    display: flex;
     width: 20%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.25);
+    flex-direction: column;
+    padding-top: 10px;
+    border-right: 1px solid #000000;
+}
+
+#chat_sidebar .reference_block {
+    margin: 5px 10px 5px 10px;
+    border: 1px outset rgba(255, 255, 255, 0.18);
+    border-radius: 35px;
+    padding: 7px 14px 7px 14px;
+    display: flex;
+}
+
+#chat_sidebar .reference_block:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px outset rgba(255, 255, 255, 0.7);
+}
+
+#chat_sidebar .reference_block:focus {
+    border: 1px inset rgba(255, 255, 255, 0.7);
+}
+
+#chat_sidebar .message_reference {
+    overflow-x: hidden;
+}
+
+#chat_sidebar a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+#chat_sidebar .reference_end{
+    position: relative;
+    left: -17px;
+    width: 18px;
+    height: 18px;  /* The same height as the text in the 'message_reference' */
 }
 
 #chat_body {
