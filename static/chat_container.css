@@ -63,6 +63,15 @@
     background-repeat: repeat;
 }
 
+#chat_body span#hallucination_warning {
+    position: relative;
+    display: inline-block;  /* Thank you https://stackoverflow.com/questions/24961795/how-can-i-use-css3-transform-on-a-span */
+    left: 50%;
+    transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
+    color: #9b9a9a;
+    top: 13%;
+}
+
 #chat_display {
     overflow-y: auto;  /* If messages go beyond the chat space, add a vertical scroll automatically. */
     height: 83%;
