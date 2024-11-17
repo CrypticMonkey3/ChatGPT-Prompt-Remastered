@@ -57,21 +57,45 @@ function displayMessage(class_name, message, chat_area){
     chat_area.appendChild(doc_frag);  // Add document fragment to chat.
 }
 
+function moveToID(element_id) {
+    window.location.href = `#${element_id}`;
+}
+
 
 /**
  * Creates a reference to a particular input, for ease of recall.
- * @param {string} div_id The ID of the div element to jump to.
+ * @param {string} message_id The ID of the div element to jump to.
  * @param {string} message The placeholder value which leads to a particular prompt.
  * @param {HTMLElement} chat_sidebar The sidebar to add these references to.
  */
-function displayMessageReference(div_id, message, chat_sidebar) {
+function displayMessageReference(message_id, message, chat_sidebar) {
     let doc_frag = document.createDocumentFragment();
 
-    let anchor_tag = document.createElement("a");
-    anchor_tag.href = `#${div_id}`;
-    anchor_tag.textContent = message;
+    let message_ref_block_div = document.createElement("div");
+    message_ref_block_div.className = "reference_block";
+    message_ref_block_div.onclick = function() {moveToID(message_id)};
 
-    doc_frag.appendChild(anchor_tag);
+    let message_ref_div = document.createElement("div");
+    message_ref_div.className = "message_reference";
+    message_ref_div.textContent = message;
+
+    let ref_end_div = document.createElement("div");
+    ref_end_div.className = "reference_end";
+
+    message_ref_block_div.appendChild(message_ref_div);
+    message_ref_block_div.appendChild(ref_end_div);
+
+    doc_frag.appendChild(message_ref_block_div);
+
+    /* Expected layout:
+        Doc Frag
+         |___ Div, class: reference_block
+              |___ Div, class: reference_message
+                   |___ Div, class: message_reference
+                   |    |___ anchor, href: '#message_id', textContent: 'message'
+                   |___ Div, class: reference_end
+     */
+
     chat_sidebar.appendChild(doc_frag);
 }
 

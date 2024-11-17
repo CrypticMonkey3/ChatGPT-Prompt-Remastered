@@ -11,6 +11,9 @@
     flex-direction: column;
     padding-top: 10px;
     border-right: 1px solid #000000;
+    overflow-y: auto;
+    direction: rtl;
+    scrollbar-color: #4a4a4a #1e1e1e;  /* Makes the scrollbar colour go dark (Firefox) */
 }
 
 #chat_sidebar .reference_block {
@@ -20,6 +23,8 @@
     padding: 7px 14px 7px 14px;
     display: flex;
     position: relative;
+    direction:ltr;
+    cursor: pointer;
 }
 
 #chat_sidebar .reference_block:hover {
@@ -38,17 +43,13 @@
 #chat_sidebar .message_reference {
     white-space: nowrap;  /* Even if a piece of text naturally goes over several lines, it's forced into one. */
     overflow-x: hidden;
-}
-
-#chat_sidebar a {
-    text-decoration: none;
     color: #ffffff;
 }
 
 #chat_sidebar .reference_end{
     position: absolute;  /* Is absolute to the reference block class - which allows overlaps */
     background-image: linear-gradient(to right, transparent, #141316);
-    right: 5%;
+    right: 8px;
     width: 40px;
     height: 18px;  /* The same height as the text in the 'message_reference' */
     pointer-events: none;  /* This element has no events on click, so any clicks on it pass through it to the underlying element */
