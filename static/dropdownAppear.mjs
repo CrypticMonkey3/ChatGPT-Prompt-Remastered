@@ -67,9 +67,7 @@ function fetchOptions(element_id) {
             fetch_dest = "/get-available-models";
             break;
 
-        case "modelTuningSelection":
-            fetch_dest = "/get-tuning-parameters";
-            break;
+        // ... Kept for scalability
     }
 
     if (fetch_dest !== "") {

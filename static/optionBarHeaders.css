@@ -60,61 +60,57 @@
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
 }
 
-#tuningOption {
+#temperatureOption {
     margin: 5px 10px;
     position: relative;
     border-radius: 10px;
     border: 1px solid #727272;
     padding: 7px 10px;
-    background-color: rgba(51, 49, 49, 0.5);
-    color: #cccccc;
+    /*background-color: rgba(51, 49, 49, 0.5);*/
+    background-image:  /* Thank you https://stackoverflow.com/questions/6457406/can-i-apply-multiple-background-colors-with-css3 for the inspiration. */
+            linear-gradient(to right, rgba(51, 49, 49, 0.5), rgba(51, 49, 49, 0.5)),  /* The background colour */
+            linear-gradient(to right, blue 0%, transparent -10%),  /* Cold colour going right */
+            linear-gradient(to left, red 0%, transparent 20%);  /* Warm colour going left */
+    color: rgba(204, 204, 204, 0.85);
     direction: ltr;
     display: flex;
     flex-direction: column;
     overflow: hidden;  /* Hides part of the image */
 }
 
-#tuningOption p, #tuningOption #temperatureScale {
+#temperatureOption p, #temperatureOption #temperatureScale {
     z-index: 1;  /* So the element can be in front of the images. */
 }
 
-#tuningOption #imageBackground {
+#temperatureOption #SnowflakesBackground, #temperatureOption #SunBurstBackground {
     position: absolute;
     z-index: 0;
 }
 
-#tuningOption #imageBackground #snowflake1 {
-    height: 60px;
+#temperatureOption #SnowflakesBackground #snowflake1 {
+    height: 70px;
     width: auto;  /* Image dimensions in the x and y are both the same */
     left: -29px;
     top: -23px;
     position: relative;
 }
 
-#tuningOption #imageBackground #snowflake2 {
-    height: 35px;
+#temperatureOption #SnowflakesBackground #snowflake2 {
+    height: 36px;
     width: auto;
-    left: -66px;
-    top: 10px;
+    left: -55px;
+    top: 1px;
     position: relative;
 }
 
-#tuningOption #imageBackground #snowflake3 {
-    height: 23px;
+#temperatureOption #SunBurstBackground #sunburst {
+    height: 70px;
     width: auto;
-    left: -73px;
-    top: -14px;
+    right: -128px;
+    top: -5px;
     position: relative;
-}
-
-#tuningOption #temperatureScale {
-    direction: rtl;
 }
 
 #modelSelection button:hover, #modelTuningSelection button:hover {
     background-color: rgba(80, 80, 80, 0.5);
-}
-
-#tuningOption #gradientOverlay {
-    background-image: linear-gradient(blue, transparent, red);
 }

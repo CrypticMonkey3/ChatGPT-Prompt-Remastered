@@ -14,6 +14,7 @@
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='toggle_sidebar.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='dropdownAppear.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='onWindowLoadFunctions.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='temperatureGauge.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
@@ -39,19 +40,20 @@ ChatGPT Remastered
                 </li>
                 <li>
                     <div id="modelTuningSelector">
-                        <button id="modelTuningDropdown" type="button" onclick="showSelection('modelTuningSelection')">Tuning</button>
+                        <button id="modelTuningDropdown" type="button" onclick="showSelection('modelTuningSelection');">Tuning</button>
                         <!-- Contain a list of adjustable hyperparameters -->
                         <div id="modelTuningSelection">
-                            <div id="tuningOption">
+                            <div id="temperatureOption">
                                 <p>Temperature</p>
                                 <p>Description</p>
-                                <div id="imageBackground">
+                                <div id="SnowflakesBackground">
                                     <img alt="snowflake1" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake1">
                                     <img alt="snowflake2" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake2">
-                                    <img alt="snowflake3" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake3">
                                 </div>
-                                <input type="range" min="0" max="1" step="0.1" value="0.7" id="temperatureScale">
-                                <div id="gradientOverlay"></div>
+                                <div id="SunBurstBackground">
+                                    <img alt="sun-burst1" src="{{ url_for('static', filename='GeekSVG_Sun.png') }}" id="sunburst">
+                                </div>
+                                <input type="range" min="0" max="1" step="0.01" value="0.7" id="temperatureScale" oninput="gaugeDrag(this.value);" onchange="gaugeDrag(this.value);">
                             </div>
                         </div>
                     </div>
