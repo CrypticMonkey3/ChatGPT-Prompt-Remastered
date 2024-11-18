@@ -32,14 +32,18 @@ ChatGPT Remastered
                 </li>
                 <li>
                     <div id="modelSelector">
-                        <button id="modelDropdown" type="button" onclick="showSelection();">ChatGPT</button>
+                        <button id="modelDropdown" type="button" onclick="showSelection('modelSelection');">ChatGPT</button>
                         <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
                         <div id="modelSelection"></div>
                     </div>
                 </li>
                 <li>
                     <div id="modelTuningSelector">
-                        <button id="modelTuningDropdown" type="button">Tuning</button>
+                        <button id="modelTuningDropdown" type="button" onclick="showSelection('modelTuningSelection')">Tuning</button>
+                        <!-- Contain a list of adjustable hyperparameters -->
+                        <div id="modelTuningSelection">
+                            <button type="button">Temperature<br  />Description</button>
+                        </div>
                     </div>
                 </li>
             </ul>
@@ -55,7 +59,7 @@ ChatGPT Remastered
                 <div id="chat_display"></div>
 
                 <!-- Need to add id to this span, as user and model responses are placed in general span object in the chat_display class -->
-                <span id="hallucination_warning">ChatGPT can make mistakes and create hallucinations. Use the resource smartly.</span>
+                <span id="hallucination_warning">ChatGPT can make mistakes and create <abbr title="Something larger than life">hallucinations</abbr>. Use the resource smartly.</span>
             </div>
         </div>
     </div>

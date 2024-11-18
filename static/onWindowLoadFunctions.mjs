@@ -5,4 +5,6 @@ window.onload = async function() {
 
     // When the window loads up, fetch and create elements of available models to choose from.
     await fetchAvailableModels();
+    // Fetch and create hyperparameter elements
+
 }

@@ -34,6 +34,10 @@ class OpenAIClient:
     def model_list(self):
         return [model.id for model in self.__client.models.list()]
 
+    @property
+    def hyperparameters(self):
+        return [self.__temperature, self.__response_style, self.__stream]
+
     def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
         """

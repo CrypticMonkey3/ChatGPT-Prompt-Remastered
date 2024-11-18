@@ -28,7 +28,7 @@
     border-style: inset;
 }
 
-#modelSelection {
+#modelSelection, #modelTuningSelection {
     position: absolute;  /* So it's relative to the container and doesn't affect the grid layout. */
     width: max-content;  /* Make each button have the same length as the largest model name. */
     top: 120%;
@@ -40,13 +40,13 @@
     opacity: 0;
     transition: opacity 0.2s ease 0s;
     max-height: 50vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     scrollbar-color: #4a4a4a #1e1e1e;  /* Makes the scrollbar colour go dark (Firefox) */
     direction: rtl;  /* Specifies text and layouts to be on the right */
     visibility: collapse;
 }
 
-#modelSelection button {
+#modelSelection button, #modelTuningSelection button {
     margin: 5px 10px;
     position: relative;
     border-radius: 17px;
@@ -56,9 +56,10 @@
     text-align: left;
     background-color: rgba(51, 49, 49, 0.5);
     color: #cccccc;
+    cursor: pointer;
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
 }
 
-#modelSelection button:hover {
+#modelSelection button:hover, #modelTuningSelection button:hover {
     background-color: rgba(80, 80, 80, 0.5);
 }

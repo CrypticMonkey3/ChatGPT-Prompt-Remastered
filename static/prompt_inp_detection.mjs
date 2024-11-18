@@ -1,4 +1,3 @@
-var prompt_moved = false;
 
 
 /**
@@ -115,6 +114,12 @@ async function postPrompt() {
 
     displayMessage("user_prompt", prompt_value, chat_area);
 
+    if (document.getElementById("prompt_container").style.top === "") {  // if the prompt hasn't moved from the starting position
+        document.getElementById("prompt_container").setAttribute("style", "top: 90%");  // move the container down.
+    }
+
+    document.getElementById("prompt_input").value = "";
+
     await fetch(  // wait until the POST has been sent, and received, in pages.py
         "/prompt-response",
         {
@@ -146,11 +151,6 @@ async function postPrompt() {
         // create reference to prompt into the chat sidebar.
         displayMessageReference(response_id, prompt_value, document.getElementById("chat_sidebar"));
 
-        if (!prompt_moved) {  // if the prompt hasn't moved from the starting position
-            prompt_moved = !prompt_moved;
-            document.getElementById("prompt_container").setAttribute("style", "top: 90%");  // move the container down.
-        }
-
     }).catch(function (error) {
         console.log("Custom Error Message: Failed to POST. Error description is as follows:\n", error);
     })
@@ -159,6 +159,4 @@ async function postPrompt() {
     if (chat_area.scrollHeight > chat_area.clientHeight) {  // clientHeight is the height of the div, scrollHeight is the height of the overflow.
         chat_area.scrollTop = chat_area.scrollHeight;
     }
-
-    document.getElementById("prompt_input").value = "";
 }

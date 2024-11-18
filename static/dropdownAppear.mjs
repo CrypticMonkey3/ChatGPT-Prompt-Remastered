@@ -16,6 +16,21 @@ function createModelOption(model_name, parent_element) {
 
 
 /**
+ * Creates a set of options to the user for a particular element dropdown.
+ * @param {string[]} options An array of options.
+ * @param {string} element_id The element ID of the dropdowns selection element.
+ */
+function createOptions(options, element_id) {
+    let modelSelection = document.getElementById("modelSelection");
+    let model_arr = models.split(" ");
+
+    for (let i = 0; i < model_arr.length; i++) {
+        createModelOption(model_arr[i], modelSelection);
+    }
+}
+
+
+/**
  * Fetches available models to the user's API KEY, and creates selectable button elements for them.
  * @returns {Promise<void>}
  */
@@ -43,16 +58,17 @@ async function fetchAvailableModels() {
 
 /**
  * Changes the opacity of the tag with the 'modelSelection' ID, to make the different models available visible.
+ * @param {string} element_id The id of the element that's selection needs to be shown.
  * @returns {Promise<void>}
  */
-async function showSelection() {
-    let modelSelection = document.getElementById("modelSelection");
+async function showSelection(element_id) {
+    let selection = document.getElementById(element_id);
 
     // whether the opacity is an empty string or not, it will always become a number between 0 & 1.
-    if (modelSelection.style.visibility === "visible") {
-        modelSelection.setAttribute("style", "opacity: 0; visibility: collapse;")
+    if (selection.style.visibility === "visible") {
+        selection.setAttribute("style", "opacity: 0; visibility: collapse;")
         return;
     }
 
-    modelSelection.setAttribute("style", "opacity: 1; visibility: visible;")
+    selection.setAttribute("style", "opacity: 1; visibility: visible;")
 }
