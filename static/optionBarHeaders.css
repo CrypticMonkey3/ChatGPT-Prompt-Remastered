@@ -60,6 +60,37 @@
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
 }
 
+#tuningOption {
+    margin: 5px 10px;
+    position: relative;
+    border-radius: 10px;
+    border: 1px solid #727272;
+    padding: 7px 10px;
+    background-color: rgba(51, 49, 49, 0.5);
+    color: #cccccc;
+    direction: ltr;
+    display: flex;
+    flex-direction: column;
+}
+
+#tuningOption p {
+    z-index: 1;
+}
+
+#tuningOption #imageBackground {
+    position: absolute;
+    z-index: 0;
+}
+
+#tuningOption #imageBackground img {
+    width: 60px;
+    height: 60px;
+}
+
+#tuningOption #temperatureScale {
+    direction: rtl;
+}
+
 #modelSelection button:hover, #modelTuningSelection button:hover {
     background-color: rgba(80, 80, 80, 0.5);
 }

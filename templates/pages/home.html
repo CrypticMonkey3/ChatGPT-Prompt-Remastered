@@ -41,7 +41,16 @@ ChatGPT Remastered
                     <div id="modelTuningSelector">
                         <button id="modelTuningDropdown" type="button" onclick="showSelection('modelTuningSelection')">Tuning</button>
                         <!-- Contain a list of adjustable hyperparameters -->
-                        <div id="modelTuningSelection"></div>
+                        <div id="modelTuningSelection">
+                            <div id="tuningOption">
+                                <p>Temperature</p>
+                                <p>Descriptino</p>
+                                <div id="imageBackground">
+                                    <img src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}">
+                                </div>
+                                <input type="range" min="0" max="1" step="0.1" value="0.7" id="temperatureScale">
+                            </div>
+                        </div>
                     </div>
                 </li>
             </ul>

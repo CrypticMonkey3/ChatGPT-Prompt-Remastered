@@ -26,7 +26,7 @@ function createOptions(options, element_id) {
     let model_arr = options.split(",");
 
     for (let i = 0; i < model_arr.length; i++) {
-        let option = model_arr[i].split(' ');
+        let option = model_arr[i].split('|');
 
         createOption(option[0], option[1], selection);
     }

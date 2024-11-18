@@ -23,7 +23,7 @@ class OpenAIClient:
         self.__tuning_parameters = {
             "temperature": 0.7,
             "stream": False,
-            "response style": "You are a helpful assistant."
+            "response-style": "You are a helpful assistant."
         }
 
         self.__conversation = "New Chat.txt"  # if user selects a conversation or is in one, this will be set to that.
@@ -33,8 +33,8 @@ class OpenAIClient:
         return self.__conversation
 
     # ---- FETCH properties for option creation ---- #
-    # The send str is in the format: "parameter value, parameter value"
-    # Or for the model list: "model description, model description"
+    # The send str is in the format: "parameter|value,parameter|value"
+    # Or for the model list: "model|description,model|description"
 
     @property
     def model_list(self) -> str:
@@ -43,7 +43,7 @@ class OpenAIClient:
         separates each with a comma.
         :return: str
         """
-        return ",".join([f"{model.id} Description" for model in self.__client.models.list()])
+        return ",".join([f"{model.id}|Description" for model in self.__client.models.list()])
 
     @property
     def tuning_parameters(self) -> str:
@@ -52,7 +52,7 @@ class OpenAIClient:
         by a space, and combines all by a comma.
         :return: str
         """
-        return ",".join([f"{param} {value}" for param, value in self.__tuning_parameters.items()])
+        return ",".join([f"{param}|{value}" for param, value in self.__tuning_parameters.items()])
 
     # ---------------------------------------------- #
 
