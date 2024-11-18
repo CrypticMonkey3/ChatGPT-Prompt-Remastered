@@ -44,11 +44,14 @@ ChatGPT Remastered
                         <div id="modelTuningSelection">
                             <div id="tuningOption">
                                 <p>Temperature</p>
-                                <p>Descriptino</p>
+                                <p>Description</p>
                                 <div id="imageBackground">
-                                    <img src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}">
+                                    <img alt="snowflake1" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake1">
+                                    <img alt="snowflake2" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake2">
+                                    <img alt="snowflake3" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake3">
                                 </div>
                                 <input type="range" min="0" max="1" step="0.1" value="0.7" id="temperatureScale">
+                                <div id="gradientOverlay"></div>
                             </div>
                         </div>
                     </div>

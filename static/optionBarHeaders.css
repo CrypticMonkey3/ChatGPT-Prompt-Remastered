@@ -71,10 +71,11 @@
     direction: ltr;
     display: flex;
     flex-direction: column;
+    overflow: hidden;  /* Hides part of the image */
 }
 
-#tuningOption p {
-    z-index: 1;
+#tuningOption p, #tuningOption #temperatureScale {
+    z-index: 1;  /* So the element can be in front of the images. */
 }
 
 #tuningOption #imageBackground {
@@ -82,9 +83,28 @@
     z-index: 0;
 }
 
-#tuningOption #imageBackground img {
-    width: 60px;
+#tuningOption #imageBackground #snowflake1 {
     height: 60px;
+    width: auto;  /* Image dimensions in the x and y are both the same */
+    left: -29px;
+    top: -23px;
+    position: relative;
+}
+
+#tuningOption #imageBackground #snowflake2 {
+    height: 35px;
+    width: auto;
+    left: -66px;
+    top: 10px;
+    position: relative;
+}
+
+#tuningOption #imageBackground #snowflake3 {
+    height: 23px;
+    width: auto;
+    left: -73px;
+    top: -14px;
+    position: relative;
 }
 
 #tuningOption #temperatureScale {
@@ -93,4 +113,8 @@
 
 #modelSelection button:hover, #modelTuningSelection button:hover {
     background-color: rgba(80, 80, 80, 0.5);
+}
+
+#tuningOption #gradientOverlay {
+    background-image: linear-gradient(blue, transparent, red);
 }

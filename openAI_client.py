@@ -23,7 +23,7 @@ class OpenAIClient:
         self.__tuning_parameters = {
             "temperature": 0.7,
             "stream": False,
-            "response-style": "You are a helpful assistant."
+            "response style": "You are a helpful assistant."
         }
 
         self.__conversation = "New Chat.txt"  # if user selects a conversation or is in one, this will be set to that.
