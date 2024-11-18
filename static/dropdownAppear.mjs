@@ -1,13 +1,14 @@
 /**
- * Create the element containing the option for a particular model.
- * @param {string} model_name The name of the model.
+ * Create the element containing the option for a particular option.
+ * @param {string} option_name The name of the option.
+ * @param {string} option_description The description of the option.
  * @param {HTMLElement} parent_element The element to add the document fragment onto.
  */
-function createModelOption(model_name, parent_element) {
+function createOption(option_name, option_description, parent_element) {
     let doc_frag = document.createDocumentFragment();
 
     let button_element = document.createElement("button");
-    button_element.innerHTML = model_name + "<br  />" + "Description";
+    button_element.innerHTML = option_name + "<br  />" + option_description;
     button_element.type = "button";
 
     doc_frag.appendChild(button_element);
@@ -17,42 +18,73 @@ function createModelOption(model_name, parent_element) {
 
 /**
  * Creates a set of options to the user for a particular element dropdown.
- * @param {string[]} options An array of options.
+ * @param {string} options A string of options separated by spaces.
  * @param {string} element_id The element ID of the dropdowns selection element.
  */
 function createOptions(options, element_id) {
-    let modelSelection = document.getElementById("modelSelection");
-    let model_arr = models.split(" ");
+    let selection = document.getElementById(element_id);
+    let model_arr = options.split(",");
 
     for (let i = 0; i < model_arr.length; i++) {
-        createModelOption(model_arr[i], modelSelection);
+        let option = model_arr[i].split(' ');
+
+        createOption(option[0], option[1], selection);
     }
 }
 
 
 /**
- * Fetches available models to the user's API KEY, and creates selectable button elements for them.
- * @returns {Promise<void>}
+ * A simple fetch call to a particular destination.
+ * @param target_dest Internal page.
+ * @returns {Promise<string>}  The type of string to be returned with the Promise object.
  */
-async function fetchAvailableModels() {
-    await fetch(  // fetch all available models that can be chosen on the given API KEY
-    "/get-available-models",
-    {method: "POST"}  // no payload, this is simply a fetch.
+async function SimpleFetch(target_dest) {
+    return await fetch(
+        target_dest,
+        {method: "POST"}  // no payload, this is simply a fetch.
 
     ).then(function(response) {
         return response.text();
 
-    }).then(function(models) {
-        let modelSelection = document.getElementById("modelSelection");
-        let model_arr = models.split(" ");
+    }).catch(function(error) {  // in case something went wrong.
+        console.log(error);
+        return "";
 
-        for (let i = 0; i < model_arr.length; i++) {
-            createModelOption(model_arr[i], modelSelection);
-        }
-
-    }).catch(function(error) {
-        // bring up an error message instead.
     })
+}
+
+
+/**
+ * Fetches options on a given id, and adds them into their appropriate div with the given id.
+ * @param {string} element_id The id of the selection div.
+ * @returns null
+ */
+function fetchOptions(element_id) {
+    let fetch_dest = ""  // an internal link to which function to call to get the appropriate data.
+
+    switch(element_id) {
+        case "modelSelection":
+            fetch_dest = "/get-available-models";
+            break;
+
+        case "modelTuningSelection":
+            fetch_dest = "/get-tuning-parameters";
+            break;
+    }
+
+    if (fetch_dest !== "") {
+        let options = SimpleFetch(fetch_dest);  // Returns a Promise<string>
+
+        options.then(function(response) {
+            if (response !== "") {
+                createOptions(response, element_id);
+            }
+        })
+
+        return null;
+    }
+
+    console.log(`Unidentified element ID: ${element_id}`);
 }
 
 

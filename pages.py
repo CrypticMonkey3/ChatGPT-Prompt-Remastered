@@ -53,4 +53,12 @@ def get_available_models() -> Tuple[str, int]:
     Function to call in order to get all available models in the API key.
     :return: Tuple[str, int]
     """
-    return " ".join(OPENAI_CLIENT.model_list), 200
+    return OPENAI_CLIENT.model_list, 200
+
+@bp.route("/get-tuning-parameters", methods=["POST"])
+def get_tuning_parameters() -> Tuple[str, int]:
+    """
+    Function to call in order to get the parameters available to change in the given model.
+    :return: Tuple[str, int]
+    """
+    return OPENAI_CLIENT.tuning_parameters, 200

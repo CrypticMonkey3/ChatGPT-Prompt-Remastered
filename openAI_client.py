@@ -20,9 +20,11 @@ class OpenAIClient:
         except AuthenticationError:
             print("\033[31mInvalid API Key, ensure the key provided in API_Key.txt is correct.\033[0m")
 
-        self.__temperature = 0.7
-        self.__stream = False
-        self.__response_style = "You are a helpful assistant"
+        self.__tuning_parameters = {
+            "temperature": 0.7,
+            "stream": False,
+            "response style": "You are a helpful assistant."
+        }
 
         self.__conversation = "New Chat.txt"  # if user selects a conversation or is in one, this will be set to that.
 
@@ -30,13 +32,29 @@ class OpenAIClient:
     def conversation(self) -> str:
         return self.__conversation
 
-    @property
-    def model_list(self):
-        return [model.id for model in self.__client.models.list()]
+    # ---- FETCH properties for option creation ---- #
+    # The send str is in the format: "parameter value, parameter value"
+    # Or for the model list: "model description, model description"
 
     @property
-    def hyperparameters(self):
-        return [self.__temperature, self.__response_style, self.__stream]
+    def model_list(self) -> str:
+        """
+        Gets each unique type of model from the available list of models in the API key, paired with a description, and
+        separates each with a comma.
+        :return: str
+        """
+        return ",".join([f"{model.id} Description" for model in self.__client.models.list()])
+
+    @property
+    def tuning_parameters(self) -> str:
+        """
+        Takes each parameter in self.__tuning_parameters, combines each key-value pair into a string that's separated
+        by a space, and combines all by a comma.
+        :return: str
+        """
+        return ",".join([f"{param} {value}" for param, value in self.__tuning_parameters.items()])
+
+    # ---------------------------------------------- #
 
     def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
@@ -52,15 +70,15 @@ class OpenAIClient:
                 messages=[
                     {
                         "role": "system",
-                        "content": self.__response_style  # How the system should respond as
+                        "content": self.__tuning_parameters["response style"]  # How the system should respond as
                     },
                     {
                         "role": "user",
                         "content": prompt  # user prompt
                     }
                 ],
-                temperature=self.__temperature,
-                stream=self.__stream  # whether we want it to have the response like ChatGPT, where bits of a response come in
+                temperature=self.__tuning_parameters["temperature"],
+                stream=self.__tuning_parameters["stream"]  # whether we want it to have the response like ChatGPT, where bits of a response come in
                 # intervals (True), or all at once. Use below if stream=True
                 # for chunk in response:
                 #     print(chunk.choices[0].text, end="")
