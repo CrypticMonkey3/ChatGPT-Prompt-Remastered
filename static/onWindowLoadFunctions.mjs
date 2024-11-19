@@ -6,7 +6,7 @@ window.onload = async function() {
     // When the window loads up, fetch and create elements of available options to choose from.
     fetchModelOptions("modelSelection");
 
-    await bodiedFetch(  // update the
+    await bodiedFetch(  // update the temperature background, and position of gauge handle.
         "/get-parameter-value",
         {"parameter": "temperature"},
         function(temp) {gaugeDrag(temp); setGaugeHandle(temp);}

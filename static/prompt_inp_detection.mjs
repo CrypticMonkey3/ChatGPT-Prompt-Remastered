@@ -1,7 +1,5 @@
-
-
 /**
-* Function for when anyone presses ENTER in the prompt, or clicks the submit button.
+* Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
 * @return {null} nothing
 */
@@ -13,14 +11,17 @@ function submitPrompt(event) {
     *       - OR if the event was a click on the submit button
     *       - ALL THE WHILE checking that the prompt is not empty
     */
-    if (((event.type === "keyup" && event.key === "Enter") || event.type === "mousedown") && prompt_value !== "") {
+    console.log(prompt_value);
+    if (((event["type"] === "keyup" && event["key"] === "Enter") || event["type"] === "mousedown") && prompt_value !== "") {
         // make another check separate to the input which checks if a model has been selected.
         if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
             postPrompt();
             return null;
         }
 
-        // create a pop-up to select a model.
+        // create a pop-up to encourage the user to select a model.
+        let prompt_pop_up = document.getElementById("prompt_pop_up");
+        prompt_pop_up.classList.add("show");
     }
 }
 

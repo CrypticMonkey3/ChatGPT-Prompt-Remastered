@@ -56,3 +56,25 @@
 #submit_prompt_input:hover {
     background-color: #2B282DFF;
 }
+
+/* Used https://www.w3schools.com/howto/howto_js_popup.asp as a reference */
+#prompt_pop_up {
+    position: relative;
+    left: 50%;
+    top: -20px;
+    display: inline-block;
+    transform: translateX(-50%);
+    background-color: #542523;
+    padding: 5px 10px;
+    color: #c4c2c2;
+    border-radius: 5px;
+    border: 1px outset #da6565;
+    opacity: 0;
+    transition: opacity 1.65s ease 0s,
+                top 1s ease 0s;
+}
+
+#prompt_pop_up.show {  /* When the show class is toggled on the following will be applied */
+    opacity: 1;
+    top: -50px;
+}

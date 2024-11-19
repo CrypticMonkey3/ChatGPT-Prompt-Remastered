@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='optionBarHeaders.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='options_bar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='chat_container.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='popUps.css') }}">
 {% endblock stylesheet %}
 
 {% block scripts %}
@@ -68,6 +67,7 @@ ChatGPT Remastered
                 <div id="prompt_container">
                     <input id="prompt_input" type="text" placeholder="Message ChatGPT">
                     <button id="submit_prompt_input" type="button"></button>
+                    <span id="prompt_pop_up">Please select a model</span>
                 </div>
 
                 <div id="chat_display"></div>

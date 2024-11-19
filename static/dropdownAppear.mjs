@@ -15,6 +15,9 @@ async function optionClick() {
         "/update-model-used",
         {"model": chosen_model}
     )
+
+    // remove any pop-ups that might've been created.
+    document.getElementById("prompt_pop_up").classList.remove("show");
 }
 
 
