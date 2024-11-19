@@ -56,13 +56,13 @@ def get_available_models() -> Tuple[str, int]:
     return OPENAI_CLIENT.model_list, 200
 
 
-@bp.route("/get-tuning-parameters", methods=["POST"])
-def get_tuning_parameters() -> Tuple[str, int]:
+@bp.route("/get-parameter-value", methods=["POST"])
+def get_parameter_value() -> Tuple[str, int]:
     """
     Function to call in order to get the parameters available to change in the given model.
     :return: Tuple[str, int]
     """
-    return OPENAI_CLIENT.tuning_parameters, 200
+    return str(OPENAI_CLIENT.tuning_parameters[request.get_json()["parameter"]]), 200
 
 
 @bp.route("/update-tuning-parameters", methods=["POST"])

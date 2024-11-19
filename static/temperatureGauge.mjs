@@ -22,24 +22,24 @@ function gaugeDrag(updated_value) {
 
 /**
  * Sets the position of the handle on the temperature gauge scale.
- * @param {number} temp The temperature to set the handle to.
+ * @param {string} temp The temperature to set the handle to.
  */
 function setGaugeHandle(temp) {
     let tuning_option = document.getElementById("temperatureScale");
-    tuning_option.setAttribute("value", temp.toString());
+    tuning_option.setAttribute("value", temp);
 }
 
 
 /**
  * Records the change made in the gauge and sends it back to the openAI client for future use.
- * @param {number} new_temp The new temperature value.
+ * @param {string} new_temp The new temperature value.
  */
 async function gaugeRelease(new_temp) {
     await bodiedFetch(
         "/update-tuning-parameters",
         {
             "parameter": "temperature",
-            "value": new_temp
+            "value": parseFloat(new_temp)
         }
     )
 }

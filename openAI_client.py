@@ -32,6 +32,10 @@ class OpenAIClient:
     def conversation(self) -> str:
         return self.__conversation
 
+    @property
+    def tuning_parameters(self) -> Dict[str, Any]:
+        return self.__tuning_parameters
+
     # ---- FETCH properties for option creation ---- #
     # The send str is in the format: "parameter|value,parameter|value"
     # Or for the model list: "model|description,model|description"
@@ -44,15 +48,6 @@ class OpenAIClient:
         :return: str
         """
         return ",".join([f"{model.id}|Description" for model in self.__client.models.list()])
-
-    @property
-    def tuning_parameters(self) -> str:
-        """
-        Takes each parameter in self.__tuning_parameters, combines each key-value pair into a string that's separated
-        by a space, and combines all by a comma.
-        :return: str
-        """
-        return ",".join([f"{param}|{value}" for param, value in self.__tuning_parameters.items()])
 
     # ---------------------------------------------- #
 

@@ -6,5 +6,9 @@ window.onload = async function() {
     // When the window loads up, fetch and create elements of available options to choose from.
     fetchOptions("modelSelection");
 
-    gaugeDrag(0.7);  // update the background to the default value of the current conversation.
+    await bodiedFetch(  // update the
+        "/get-parameter-value",
+        {"parameter": "temperature"},
+        function(x) {gaugeDrag(x); setGaugeHandle(x);}
+    )
 }
