@@ -1,3 +1,11 @@
+
+function optionClick() {
+    // change the parent innerHTML to be equivalent to the chosen models name.
+
+    // Close the selection.
+}
+
+
 /**
  * Create the element containing the option for a particular option.
  * @param {string} option_name The name of the option.
@@ -10,6 +18,7 @@ function createOption(option_name, option_description, parent_element) {
     let button_element = document.createElement("button");
     button_element.innerHTML = option_name + "<br  />" + option_description;
     button_element.type = "button";
+    button_element.onclick =
 
     doc_frag.appendChild(button_element);
     parent_element.appendChild(doc_frag);
@@ -21,7 +30,7 @@ function createOption(option_name, option_description, parent_element) {
  * @param {string} options A string of options separated by spaces.
  * @param {string} element_id The element ID of the dropdowns selection element.
  */
-function createOptions(options, element_id) {
+function createModelOptions(options, element_id) {
     let selection = document.getElementById(element_id);
     let model_arr = options.split(",");
 
@@ -38,28 +47,12 @@ function createOptions(options, element_id) {
  * @param {string} element_id The id of the selection div.
  * @returns null
  */
-async function fetchOptions(element_id) {
-    let fetch_dest = ""  // an internal link to which function to call to get the appropriate data.
-
-    switch(element_id) {
-        case "modelSelection":
-            fetch_dest = "/get-available-models";
-            break;
-
-        // ... Kept for scalability
-    }
-
-    if (fetch_dest !== "") {
-        await bodiedFetch(
-            fetch_dest,
-            {},
-            createOptions, element_id
-        )
-
-        return null;
-    }
-
-    console.log(`Unidentified element ID: ${element_id}`);
+async function fetchModelOptions(element_id) {
+    await bodiedFetch(
+        "/get-available-models",
+        {},
+        createModelOptions, element_id
+    )
 }
 
 

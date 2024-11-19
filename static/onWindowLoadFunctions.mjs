@@ -4,7 +4,7 @@ window.onload = async function() {
     document.getElementById("submit_prompt_input").addEventListener("mousedown", submitPrompt);
 
     // When the window loads up, fetch and create elements of available options to choose from.
-    fetchOptions("modelSelection");
+    fetchModelOptions("modelSelection");
 
     await bodiedFetch(  // update the
         "/get-parameter-value",
