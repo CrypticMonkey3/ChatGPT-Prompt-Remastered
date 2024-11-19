@@ -9,6 +9,6 @@ window.onload = async function() {
     await bodiedFetch(  // update the
         "/get-parameter-value",
         {"parameter": "temperature"},
-        function(x) {gaugeDrag(x); setGaugeHandle(x);}
+        function(temp) {gaugeDrag(temp); setGaugeHandle(temp);}
     )
 }

@@ -72,10 +72,9 @@ def update_tuning_parameters() -> Tuple[str, int]:
     :return: Tuple[str, int]
     """
     param_details = request.get_json()
-    print(param_details)
 
     if OPENAI_CLIENT.update_tuning_parameter(param_details["parameter"], param_details["value"]):
         return "", 200
 
-    return "PASSED PARAMETER WAS WRONG!", 200
+    return "PASSED ARGUMENT WAS WRONG!", 200
 
