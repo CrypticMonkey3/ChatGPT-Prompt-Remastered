@@ -34,32 +34,11 @@ function createOptions(options, element_id) {
 
 
 /**
- * A simple fetch call to a particular destination.
- * @param target_dest Internal page.
- * @returns {Promise<string>}  The type of string to be returned with the Promise object.
- */
-async function SimpleFetch(target_dest) {
-    return await fetch(
-        target_dest,
-        {method: "POST"}  // no payload, this is simply a fetch.
-
-    ).then(function(response) {
-        return response.text();
-
-    }).catch(function(error) {  // in case something went wrong.
-        console.log(error);
-        return "";
-
-    })
-}
-
-
-/**
  * Fetches options on a given id, and adds them into their appropriate div with the given id.
  * @param {string} element_id The id of the selection div.
  * @returns null
  */
-function fetchOptions(element_id) {
+async function fetchOptions(element_id) {
     let fetch_dest = ""  // an internal link to which function to call to get the appropriate data.
 
     switch(element_id) {
@@ -71,13 +50,11 @@ function fetchOptions(element_id) {
     }
 
     if (fetch_dest !== "") {
-        let options = SimpleFetch(fetch_dest);  // Returns a Promise<string>
-
-        options.then(function(response) {
-            if (response !== "") {
-                createOptions(response, element_id);
-            }
-        })
+        await bodiedFetch(
+            fetch_dest,
+            {},
+            createOptions, element_id
+        )
 
         return null;
     }

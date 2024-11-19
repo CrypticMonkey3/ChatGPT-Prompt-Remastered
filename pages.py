@@ -55,6 +55,7 @@ def get_available_models() -> Tuple[str, int]:
     """
     return OPENAI_CLIENT.model_list, 200
 
+
 @bp.route("/get-tuning-parameters", methods=["POST"])
 def get_tuning_parameters() -> Tuple[str, int]:
     """
@@ -62,3 +63,19 @@ def get_tuning_parameters() -> Tuple[str, int]:
     :return: Tuple[str, int]
     """
     return OPENAI_CLIENT.tuning_parameters, 200
+
+
+@bp.route("/update-tuning-parameters", methods=["POST"])
+def update_tuning_parameters() -> Tuple[str, int]:
+    """
+    Function to call to update the openAI client's tuning parameters.
+    :return: Tuple[str, int]
+    """
+    param_details = request.get_json()
+    print(param_details)
+
+    if OPENAI_CLIENT.update_tuning_parameter(param_details["parameter"], param_details["value"]):
+        return "", 200
+
+    return "PASSED PARAMETER WAS WRONG!", 200
+

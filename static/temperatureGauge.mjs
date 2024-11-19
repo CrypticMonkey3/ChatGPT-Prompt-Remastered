@@ -4,6 +4,9 @@
  */
 function gaugeDrag(updated_value) {
     let tuning_option = document.getElementById("temperatureOption");
+    let snowflakes = document.getElementById("SnowflakesBackground");
+    let sunburst = document.getElementById("SunBurstBackground");
+
     let transparency_len = (0.5 - updated_value) * 200;
 
     tuning_option.setAttribute("style",
@@ -12,14 +15,31 @@ function gaugeDrag(updated_value) {
             linear-gradient(to left, red 0%, transparent ${-transparency_len}%);`
     )
 
-    console.log(updated_value);
+    snowflakes.setAttribute("style", `opacity: ${transparency_len / 100}`);
+    sunburst.setAttribute("style", `opacity: ${-transparency_len / 100}`);
+}
+
+
+/**
+ * Sets the position of the handle on the temperature gauge scale.
+ * @param {number} temp The temperature to set the handle to.
+ */
+function setGaugeHandle(temp) {
+    let tuning_option = document.getElementById("temperatureScale");
+    tuning_option.setAttribute("value", temp.toString());
 }
 
 
 /**
  * Records the change made in the gauge and sends it back to the openAI client for future use.
- * @param val
+ * @param {number} new_temp The new temperature value.
  */
-function gaugeRelease(val) {
-    console.log(val);
+async function gaugeRelease(new_temp) {
+    await bodiedFetch(
+        "/update-tuning-parameters",
+        {
+            "parameter": "temperature",
+            "value": new_temp
+        }
+    )
 }

@@ -100,6 +100,31 @@ function displayMessageReference(message_id, message, chat_sidebar) {
 
 
 /**
+ * The function to call when a response has been received from the prompt.
+ * @param response The model's response to a given prompt.
+ * @param args Will contain a tuple of args: (chat_area, prompt_value)
+ */
+function updateChat(response, ...args) {
+    console.log(response);
+    console.log(args);
+
+    // display response onto the main chat area.
+    let response_id = response.split(" ", 1)[0];
+    let model_response = response.substring(response_id.length + 1, response.length);
+
+    displayMessage("llm_response", model_response, args[0]);
+
+    // edit the last user prompt and add the id onto it. This is so we can quickly get jump to this element.
+    let user_prompts = document.getElementsByClassName("user_prompt");
+    user_prompts[user_prompts.length - 1].id = response_id;
+
+    // create reference to prompt into the chat sidebar.
+    displayMessageReference(response_id, args[1], document.getElementById("chat_sidebar"));
+
+}
+
+
+/**
 * Executes a POST request to /prompt-response function in pages.py containing whatever value was in the prompt.
 * @return {null} nothing
 */
@@ -120,40 +145,12 @@ async function postPrompt() {
 
     document.getElementById("prompt_input").value = "";
 
-    await fetch(  // wait until the POST has been sent, and received, in pages.py
+    await bodiedFetch(
         "/prompt-response",
-        {
-            method: "POST",
-            headers: {  // details that the payload is in a JSON format
-                "Accept": "Application/json",
-                "Content-Type": "Application/json"
-            },
-            body: JSON.stringify({  // JSON payload
-                "prompt": prompt_value
-            })
-        }
-    ).then(function (response){
-        return response.text();  // done so that the body of the response isn't consumed.
+        {"prompt": prompt_value},
+        updateChat, chat_area, prompt_value
+    );
 
-    }).then(function (response) {  // When a response is made
-        console.log(response);
-
-        // display response onto the main chat area.
-        let response_id = response.split(" ", 1)[0];
-        let model_response = response.substring(response_id.length + 1, response.length);
-
-        displayMessage("llm_response", model_response, chat_area);
-
-        // edit the last user prompt and add the id onto it. This is so we can quickly get jump to this element.
-        let user_prompts = document.getElementsByClassName("user_prompt");
-        user_prompts[user_prompts.length - 1].id = response_id;
-
-        // create reference to prompt into the chat sidebar.
-        displayMessageReference(response_id, prompt_value, document.getElementById("chat_sidebar"));
-
-    }).catch(function (error) {
-        console.log("Custom Error Message: Failed to POST. Error description is as follows:\n", error);
-    })
 
     // Ensure that if the vertical scroll is active, that it's at the bottom.
     if (chat_area.scrollHeight > chat_area.clientHeight) {  // clientHeight is the height of the div, scrollHeight is the height of the overflow.

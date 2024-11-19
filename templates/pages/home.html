@@ -15,6 +15,7 @@
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='dropdownAppear.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='onWindowLoadFunctions.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='temperatureGauge.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='CommonFunctions.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
@@ -53,7 +54,7 @@ ChatGPT Remastered
                                 <div id="SunBurstBackground">
                                     <img alt="sun-burst1" src="{{ url_for('static', filename='GeekSVG_Sun.png') }}" id="sunburst">
                                 </div>
-                                <input type="range" min="0" max="1" step="0.01" value="0.7" id="temperatureScale" oninput="gaugeDrag(this.value);" onchange="gaugeDrag(this.value);">
+                                <input type="range" min="0" max="1" step="0.01" value="0.7" id="temperatureScale" oninput="gaugeDrag(this.value);" onchange="gaugeRelease(this.value);">
                             </div>
                         </div>
                     </div>

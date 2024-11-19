@@ -5,5 +5,6 @@ window.onload = async function() {
 
     // When the window loads up, fetch and create elements of available options to choose from.
     fetchOptions("modelSelection");
-    fetchOptions("modelTuningSelection");
+
+    gaugeDrag(0.7);  // update the background to the default value of the current conversation.
 }

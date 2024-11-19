@@ -56,6 +56,19 @@ class OpenAIClient:
 
     # ---------------------------------------------- #
 
+    def update_tuning_parameter(self, param: str, value: Any) -> bool:
+        """
+        Updates the tuning parameter.
+        :param str param: The name of the parameter.
+        :param Any value: The new value of the parameter.
+        :return: bool - whether the given parameter exists or not and hence if the action was completed or not.
+        """
+        if self.__tuning_parameters.get(param, None) is not None:
+            self.__tuning_parameters[param] = value
+            return True
+
+        return False
+
     def generate_text(self, prompt) -> \
             Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], None]:
         """
