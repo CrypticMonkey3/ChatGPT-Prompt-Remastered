@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='optionBarHeaders.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='options_bar.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='chat_container.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='popUps.css') }}">
 {% endblock stylesheet %}
 
 {% block scripts %}
@@ -34,14 +35,14 @@ ChatGPT Remastered
                 </li>
                 <li>
                     <div id="modelSelector">
-                        <button id="modelDropdown" type="button" onclick="showSelection('modelSelection');">Choose a model</button>
+                        <button id="modelDropdown" type="button" onclick="toggleSelection('modelSelection');">Choose a model</button>
                         <!-- Contain a list of available models from the API KEY and editable parameters: with brief descriptions of what they are -->
                         <div id="modelSelection"></div>
                     </div>
                 </li>
                 <li>
                     <div id="modelTuningSelector">
-                        <button id="modelTuningDropdown" type="button" onclick="showSelection('modelTuningSelection');">Tuning</button>
+                        <button id="modelTuningDropdown" type="button" onclick="toggleSelection('modelTuningSelection');">Tuning</button>
                         <!-- Contain a list of adjustable hyperparameters -->
                         <div id="modelTuningSelection">
                             <div id="temperatureOption">

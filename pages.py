@@ -78,3 +78,11 @@ def update_tuning_parameters() -> Tuple[str, int]:
 
     return "PASSED ARGUMENT WAS WRONG!", 200
 
+@bp.route("/update-model-used", methods=["POST"])
+def update_model_used() -> Tuple[str, int]:
+    """
+    Function to call to update the model the user wants to use.
+    :return: Tuple[str, int]
+    """
+    OPENAI_CLIENT.update_model(request.get_json()["model"])
+    return "", 200

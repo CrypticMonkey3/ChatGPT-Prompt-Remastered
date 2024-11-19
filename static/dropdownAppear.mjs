@@ -1,8 +1,20 @@
-
-function optionClick() {
+/**
+ * Changes the modelDropdown element, closes the selection, and records the change of model.
+ * @returns {Promise<void>}
+ */
+async function optionClick() {
     // change the parent innerHTML to be equivalent to the chosen models name.
+    let chosen_model = this.innerHTML.split("<br>")[0]
+    this.parentNode.parentNode.children[0].innerHTML = chosen_model;
 
     // Close the selection.
+    toggleSelection(this.parentNode.id);
+
+    // Send the selected model back to the api client.
+    await bodiedFetch(
+        "/update-model-used",
+        {"model": chosen_model}
+    )
 }
 
 
@@ -18,7 +30,7 @@ function createOption(option_name, option_description, parent_element) {
     let button_element = document.createElement("button");
     button_element.innerHTML = option_name + "<br  />" + option_description;
     button_element.type = "button";
-    button_element.onclick =
+    button_element.onclick = optionClick;
 
     doc_frag.appendChild(button_element);
     parent_element.appendChild(doc_frag);
@@ -59,15 +71,15 @@ async function fetchModelOptions(element_id) {
 /**
  * Changes the opacity of the tag with the 'modelSelection' ID, to make the different models available visible.
  * @param {string} element_id The id of the element that's selection needs to be shown.
- * @returns {Promise<void>}
+ * @returns null
  */
-async function showSelection(element_id) {
+async function toggleSelection(element_id) {
     let selection = document.getElementById(element_id);
 
     // whether the opacity is an empty string or not, it will always become a number between 0 & 1.
     if (selection.style.visibility === "visible") {
         selection.setAttribute("style", "opacity: 0; visibility: collapse;")
-        return;
+        return null;
     }
 
     selection.setAttribute("style", "opacity: 1; visibility: visible;")

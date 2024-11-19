@@ -26,6 +26,7 @@ class OpenAIClient:
             "response style": "You are a helpful assistant."
         }
 
+        self.__model = ""
         self.__conversation = "New Chat.txt"  # if user selects a conversation or is in one, this will be set to that.
 
     @property
@@ -35,6 +36,9 @@ class OpenAIClient:
     @property
     def tuning_parameters(self) -> Dict[str, Any]:
         return self.__tuning_parameters
+
+    def update_model(self, new_model: str) -> None:
+        self.__model = new_model
 
     # ---- FETCH properties for option creation ---- #
     # The send str is in the format: "parameter|value,parameter|value"
@@ -74,7 +78,8 @@ class OpenAIClient:
         response: Union[completions.ChatCompletion, completions.Stream[completions.ChatCompletionChunk], str] = ""
         try:
             response = self.__client.chat.completions.create(
-                model="gpt-4o-mini",  # You need a subscription to use this model
+                # model=self.__model,
+                model="gpt-4o-mini",  # Uncomment the above when pop-ups are tested.
                 messages=[
                     {
                         "role": "system",

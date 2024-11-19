@@ -14,7 +14,13 @@ function submitPrompt(event) {
     *       - ALL THE WHILE checking that the prompt is not empty
     */
     if (((event.type === "keyup" && event.key === "Enter") || event.type === "mousedown") && prompt_value !== "") {
-        postPrompt();
+        // make another check separate to the input which checks if a model has been selected.
+        if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
+            postPrompt();
+            return null;
+        }
+
+        // create a pop-up to select a model.
     }
 }
 
