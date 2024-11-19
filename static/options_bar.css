@@ -4,6 +4,7 @@
     height: 6.6%;
     background-color: rgba(13, 13, 13, 0.7);
     border-bottom: 1px solid #000000;
+    border-top: 1px solid #000000;
 }
 
 #options_bar ul {
