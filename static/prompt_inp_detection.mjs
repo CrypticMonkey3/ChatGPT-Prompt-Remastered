@@ -1,3 +1,6 @@
+
+
+
 /**
 * Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
@@ -11,7 +14,6 @@ function submitPrompt(event) {
     *       - OR if the event was a click on the submit button
     *       - ALL THE WHILE checking that the prompt is not empty
     */
-    console.log(prompt_value);
     if (((event["type"] === "keyup" && event["key"] === "Enter") || event["type"] === "mousedown") && prompt_value !== "") {
         // make another check separate to the input which checks if a model has been selected.
         if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
@@ -20,8 +22,7 @@ function submitPrompt(event) {
         }
 
         // create a pop-up to encourage the user to select a model.
-        let prompt_pop_up = document.getElementById("prompt_pop_up");
-        prompt_pop_up.classList.add("show");
+        document.getElementById("prompt_pop_up").classList.add("show");
     }
 }
 
@@ -34,6 +35,7 @@ function submitPrompt(event) {
  * @return {null} nothing- just adding elements onto the screen.
  */
 function displayMessage(class_name, message, chat_area){
+    let showdown_converter = new showdown.Converter();
     /*
      create document fragment for efficient DOM manipulation - improves performance by building elements in
      memory before adding to DOM.
@@ -44,7 +46,7 @@ function displayMessage(class_name, message, chat_area){
     chat_div.className = class_name;
 
     let message_content = document.createElement("span");
-    message_content.textContent = message;
+    message_content.innerHTML = showdown_converter.makeHtml(message);
 
     let profile_pic = document.createElement("img");
     profile_pic.alt = `${class_name} profile picture`;
@@ -147,7 +149,7 @@ async function postPrompt() {
     displayMessage("user_prompt", prompt_value, chat_area);
 
     if (document.getElementById("prompt_container").style.top === "") {  // if the prompt hasn't moved from the starting position
-        document.getElementById("prompt_container").setAttribute("style", "top: 90%");  // move the container down.
+        document.getElementById("prompt_container").setAttribute("style", "top: 91.5%");  // move the container down.
     }
 
     document.getElementById("prompt_input").value = "";

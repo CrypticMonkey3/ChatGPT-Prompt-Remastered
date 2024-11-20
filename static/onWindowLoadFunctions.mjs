@@ -6,6 +6,14 @@ window.onload = async function() {
     // When the window loads up, fetch and create elements of available options to choose from.
     fetchModelOptions("modelSelection");
 
+    await bodiedFetch(  // so when the page is refreshed the chosen model will still be kept.
+        "/get-model-used",
+        {},
+        function(model) {
+            document.getElementById("modelDropdown").innerHTML = (model === "" ? "Choose a model" : model);
+        }
+    )
+
     await bodiedFetch(  // update the temperature background, and position of gauge handle.
         "/get-parameter-value",
         {"parameter": "temperature"},

@@ -37,7 +37,12 @@ class OpenAIClient:
     def tuning_parameters(self) -> Dict[str, Any]:
         return self.__tuning_parameters
 
-    def update_model(self, new_model: str) -> None:
+    @property
+    def model(self) -> str:
+        return self.__model
+
+    @model.setter
+    def model(self, new_model: str) -> None:
         self.__model = new_model
 
     # ---- FETCH properties for option creation ---- #
