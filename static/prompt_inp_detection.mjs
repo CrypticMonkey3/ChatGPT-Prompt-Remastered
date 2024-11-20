@@ -160,5 +160,9 @@ async function postPrompt() {
     // Ensure that if the vertical scroll is active, that it's at the bottom.
     if (chat_area.scrollHeight > chat_area.clientHeight) {  // clientHeight is the height of the div, scrollHeight is the height of the overflow.
         chat_area.scrollTop = chat_area.scrollHeight;
+
+        if (chat_area.getAttribute("style") === null) {  // Add a bottom border if the response has exceeded the chat display.
+            chat_area.setAttribute("style", "border-bottom: 2px solid; border-image: linear-gradient(to right, transparent 10%, black 50%, transparent 90%, transparent) 100% 1;")
+        }
     }
 }
