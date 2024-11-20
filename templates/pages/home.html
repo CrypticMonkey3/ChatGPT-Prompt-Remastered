@@ -44,7 +44,7 @@ ChatGPT Remastered
                         <button id="modelTuningDropdown" type="button" onclick="toggleSelection('modelTuningSelection');">Tuning</button>
                         <!-- Contain a list of adjustable hyperparameters -->
                         <div id="modelTuningSelection">
-                            <div id="temperatureOption">
+                            <div id="temperatureOption" class="tuningOption">
                                 <p>Temperature</p>
                                 <p>Description</p>
                                 <div id="SnowflakesBackground">
@@ -55,6 +55,11 @@ ChatGPT Remastered
                                     <img alt="sun-burst1" src="{{ url_for('static', filename='GeekSVG_Sun.png') }}" id="sunburst">
                                 </div>
                                 <input type="range" min="0" max="1" step="0.01" value="0.7" id="temperatureScale" oninput="gaugeDrag(this.value);" onchange="gaugeRelease(this.value);">
+                            </div>
+                            <div id="responseStyleOption" class="tuningOption">
+                                <p>Response Style</p>
+                                <p>Description</p>
+                                <textarea id="responseStyleArea" rows="1" cols="50"></textarea>
                             </div>
                         </div>
                     </div>
