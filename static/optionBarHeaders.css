@@ -40,6 +40,7 @@
     opacity: 0;
     transition: opacity 0.2s ease 0s;
     max-height: 50vh;
+    max-width: 35vh;
     overflow-y: auto;
     scrollbar-color: #4a4a4a #1e1e1e;  /* Makes the scrollbar colour go dark (Firefox) */
     direction: rtl;  /* Specifies text and layouts to be on the right */
@@ -67,17 +68,27 @@
     border: 1px solid #727272;
     padding: 7px 10px;
     color: rgba(204, 204, 204, 0.85);
-}
-
-#temperatureOption {
-    /*background-color: rgba(51, 49, 49, 0.5);*/
-    background-image:  /* Thank you https://stackoverflow.com/questions/6457406/can-i-apply-multiple-background-colors-with-css3 for the inspiration. */
-            linear-gradient(to right, rgba(51, 49, 49, 0.5), rgba(51, 49, 49, 0.5)),  /* The background colour */
-            linear-gradient(to right, blue 0%, transparent -10%),  /* Cold colour going right */
-            linear-gradient(to left, red 0%, transparent 20%);  /* Warm colour going left */
     direction: ltr;
     display: flex;
     flex-direction: column;
+    background-color: rgba(51, 49, 49, 0.5);
+}
+
+.optionTitle {
+    font-size: 18px;
+    margin: 5px 0 3px;
+}
+
+.optionDescription {
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+#temperatureOption {
+    background-image:  /* Thank you https://stackoverflow.com/questions/6457406/can-i-apply-multiple-background-colors-with-css3 for the inspiration. */
+            linear-gradient(to right, blue 0%, transparent -10%),  /* Cold colour going right */
+            linear-gradient(to left, red 0%, transparent 20%);  /* Warm colour going left */
+
     overflow: hidden;  /* Hides part of the image */
 }
 

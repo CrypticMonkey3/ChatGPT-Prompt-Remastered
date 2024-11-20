@@ -45,8 +45,8 @@ ChatGPT Remastered
                         <!-- Contain a list of adjustable hyperparameters -->
                         <div id="modelTuningSelection">
                             <div id="temperatureOption" class="tuningOption">
-                                <p>Temperature</p>
-                                <p>Description</p>
+                                <p class="optionTitle">Temperature</p>
+                                <p class="optionDescription">Determines the level of creativity in the model's response; 1 being more creative, or random, whilst 0 being closer to being more deterministic and repetitive.</p>
                                 <div id="SnowflakesBackground">
                                     <img alt="snowflake1" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake1">
                                     <img alt="snowflake2" src="{{ url_for('static', filename='GeekSVG_Snowflake.png') }}" id="snowflake2">
@@ -57,9 +57,13 @@ ChatGPT Remastered
                                 <input type="range" min="0" max="1" step="0.01" value="0.7" id="temperatureScale" oninput="gaugeDrag(this.value);" onchange="gaugeRelease(this.value);">
                             </div>
                             <div id="responseStyleOption" class="tuningOption">
-                                <p>Response Style</p>
-                                <p>Description</p>
-                                <textarea id="responseStyleArea" rows="1" cols="50"></textarea>
+                                <p class="optionTitle">Response Style</p>
+                                <p class="optionDescription">A type of mannerism the model will try to imitate.</p>
+                                <input id="responseStyleInput" type="text">
+                                <div id="responseStyleConfirmation">
+                                    <button type="button">Cancel</button>
+                                    <button type="button">Apply</button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -70,7 +74,8 @@ ChatGPT Remastered
             <div id="chat_sidebar"></div>
             <div id="chat_body">
                 <div id="prompt_container">
-                    <input id="prompt_input" type="text" placeholder="Message ChatGPT">
+                    <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1"></textarea>
+<!--                    <input id="prompt_input" type="text" placeholder="Message ChatGPT">-->
                     <button id="submit_prompt_input" type="button"></button>
                     <span id="prompt_pop_up">Please select a model</span>
                 </div>

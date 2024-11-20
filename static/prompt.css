@@ -17,13 +17,16 @@
     left: 50%;
     transform: translate(-50%, -50%);  /* Moves an element left by 50% of ITSELF */
     border-radius: 20px;
-    padding: 15px 14px 15px 14px;
+    padding: 14px 10% 14px 13px;
     outline: none;
     z-index: 1;
     transition: box-shadow linear 1s;
     border: 2px outset #111111;
     background-color: #64606b;
     color: #ffffff;
+    font-family: inherit;
+    resize: none;
+    font-size: 15px;
 }
 
 #prompt_container ::placeholder{
