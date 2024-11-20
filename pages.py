@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request
 import openAI_client
 from typing import *
+from markdown2 import markdown
 
 OPENAI_CLIENT = openAI_client.OpenAIClient()
 
@@ -44,7 +45,7 @@ def prompt_response() -> Tuple[str, int]:
     print(lines)
 
     # Note, using len(lines) // 2, may not be a full proof id method as model responses can be over multiple lines.
-    return f"{len(lines) // 2} {response_content}", 200  # the response should be returned here
+    return f"{len(lines) // 2} {markdown(response_content, extras=['tables'])}", 200  # the response should be returned here
 
 
 @bp.route("/get-available-models", methods=["POST"])

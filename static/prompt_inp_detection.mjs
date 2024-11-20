@@ -1,6 +1,3 @@
-
-
-
 /**
 * Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
@@ -35,7 +32,6 @@ function submitPrompt(event) {
  * @return {null} nothing- just adding elements onto the screen.
  */
 function displayMessage(class_name, message, chat_area){
-    let showdown_converter = new showdown.Converter();
     /*
      create document fragment for efficient DOM manipulation - improves performance by building elements in
      memory before adding to DOM.
@@ -46,7 +42,7 @@ function displayMessage(class_name, message, chat_area){
     chat_div.className = class_name;
 
     let message_content = document.createElement("span");
-    message_content.innerHTML = showdown_converter.makeHtml(message);
+    message_content.innerHTML = message;
 
     let profile_pic = document.createElement("img");
     profile_pic.alt = `${class_name} profile picture`;

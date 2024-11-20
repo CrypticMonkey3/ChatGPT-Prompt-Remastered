@@ -123,3 +123,20 @@
 .user_prompt img {
     margin-left: 7px;
 }
+
+.llm_response span ol, .llm_response span ul {
+    padding-inline-start: revert;
+}
+
+.llm_response span ol li, .llm_response span ul li {
+    padding-bottom: 5px;
+}
+
+.llm_response span h1, .llm_response span h2, .llm_response span h3, .llm_response span h4 {
+    padding: 10px 0;
+}
+
+.llm_response span table, .llm_response span th, .llm_response span td {  /* Basic table styling */
+    border: 1px solid #000000;
+}
+
