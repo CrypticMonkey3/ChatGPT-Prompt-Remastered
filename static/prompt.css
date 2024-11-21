@@ -12,10 +12,10 @@
 }
 
 #prompt_input {
-    position: absolute;
+    position: relative;
     width: 100%;
     left: 50%;
-    transform: translate(-50%, -50%);  /* Moves an element left by 50% of ITSELF */
+    transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
     border-radius: 20px;
     padding: 14px 10% 14px 13px;
     outline: none;
@@ -47,6 +47,7 @@
     height: 35px;
     transform: translateY(-50%);
     right: 3%;
+    bottom: -10px;
     z-index: 2;
     background-image: url(Arrow.png);
     background-color: #434047;  /* Same as sidebar opener and closer */
@@ -62,9 +63,9 @@
 
 /* Used https://www.w3schools.com/howto/howto_js_popup.asp as a reference */
 #prompt_pop_up {
-    position: relative;
+    position: absolute;
     left: 50%;
-    top: -20px;
+    top: -53%;
     display: inline-block;
     transform: translateX(-50%);
     background-color: #542523;

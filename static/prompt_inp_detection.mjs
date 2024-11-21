@@ -1,3 +1,10 @@
+
+function checkPromptArea() {
+    console.log(document.getElementById("prompt_input").value);
+    console.log(document.getElementById("prompt_input").getBoundingClientRect()["width"]);
+}
+
+
 /**
 * Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
 * @param {event} event Key event to capture
