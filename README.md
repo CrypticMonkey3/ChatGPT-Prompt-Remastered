@@ -1,5 +1,5 @@
 # ChatGPT-Prompt-Remastered
-A remastered interface of ChatGPT that feels more friendly to the user, such that you wouldn't want to go back to using ChatGPT's interface. Additionally, it features parameter tuning of models which is missed out in ChatGPTs interface to cater for the less tech-savvy audience.
+A remastered interface of ChatGPT that feels more friendly to the user, in a way that you would not want to go back to using the original ChatGPT interface. Additionally, it features parameter tuning for models which is missed out in ChatGPTs interface to cater for the less tech-savvy audience.
 
 ## How to start?
 Easy-peasy, replace the contents of API_Key.txt with your own API key, then run `main.py`.
