@@ -1,58 +1,42 @@
-let total_rows = 1;
 
 
 function checkPromptArea() {
-    console.log(document.getElementById("prompt_input").value);
-    console.log(document.getElementById("prompt_input").getBoundingClientRect()["width"]);
+    let prompt_input = document.getElementById("prompt_input");
 
-    let rows = 1;
+    /* Check combinations of key presses */
 
-
-    'this.style.height = ""; this.style.height = this.scrollHeight + 3 + "px"'
-
-    let x = document.getElementById("prompt_input");
-
-    if (x.clientHeight <= 150) {
-        x.setAttribute("style", "height: 0;");
-        x.setAttribute("style", `height: ${x.scrollHeight + 3}px;`);
-        return;
+    // If the Enter key is pressed without shift, this does not indicate a newline, and thus will submit the prompt.
+    if (keys_pressed["Enter"] && !keys_pressed["Shift"]) {
+        submitPrompt();
     }
 
+    else if (keys_pressed["Backspace"]) {
+        prompt_input.setAttribute("style", "height: 0;");
+        prompt_input.setAttribute("style", `height: ${Math.min(151, prompt_input.scrollHeight + 3)}px;`);
+    }
 
-    console.log(x.clientHeight);
-    // if (x.height )
+    if (prompt_input.scrollHeight < 151) {  // Will grow the height of the input box up to a particular height
+        prompt_input.setAttribute("style", `height: ${prompt_input.scrollHeight + 3}px;`);
 
+    }
+
+    prompt_input.scrollTop = prompt_input.scrollHeight;  // Ensure that the text area scroller is always at the bottom
 }
 
 
 /**
-* Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
-* @param {event|null} event Will hold any mouseup events.
+* Checks certain criteria before posting the prompt back to the openai client.
 * @return {null} nothing
 */
-function submitPrompt(event) {
-    let prompt_input = document.getElementById("prompt_input");
-
-    /* Checking several things before posting the prompt:
-    *       - If the event was a key press and that key press was ENTER
-    *       - OR if the event was a click on the submit button
-    *       - ALL THE WHILE checking that the prompt is not empty
-    */
-    if (((event["type"] === "keyup" && event["key"] === "Enter") || event["type"] === "mousedown") && prompt_input.value !== "") {
-        // make another check separate to the input which checks if a model has been selected.
-        if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
-            postPrompt();
-            return null;
-        }
-
-        // create a pop-up to encourage the user to select a model.
-        document.getElementById("prompt_pop_up").classList.add("show");
+function submitPrompt() {
+    // make another check separate to the input which checks if a model has been selected.
+    if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
+        postPrompt();
+        return null;
     }
 
-    // Checks whether the user entered something made the textarea move to a new line.
-    else if (event["type"] === "keyup" && prompt_input.scrollHeight !== prompt_input.clientHeight) {
-        prompt_input.rows = Math.min(prompt_input.rows + 1, 5);
-    }
+    // create a pop-up to encourage the user to select a model.
+    document.getElementById("prompt_pop_up").classList.add("show");
 }
 
 

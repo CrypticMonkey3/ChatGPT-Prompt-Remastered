@@ -49,21 +49,12 @@
     font-family: inherit;
     resize: none;
     font-size: 15px;
-    direction: rtl;
-    text-align: left;
+    overflow-y: hidden;
 }
-
-/*#prompt_input ::-webkit-scrollbar {*/
-/*    direction:rtl;*/
-/*}*/
 
 #prompt_container ::placeholder{
     color: white;
     opacity: 0.75;
-}
-
-#prompt_input_container:hover {
-
 }
 
 #submit_prompt_input {
@@ -102,6 +93,7 @@
     opacity: 0;
     transition: opacity 1.65s ease 0s,
                 top 1s ease 0s;
+    z-index: -1;
 }
 
 #prompt_pop_up.show {  /* When the show class is toggled on the following will be applied */
