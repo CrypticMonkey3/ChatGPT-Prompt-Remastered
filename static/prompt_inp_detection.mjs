@@ -1,9 +1,12 @@
 
 
 function checkPromptArea() {
+    let prompt_container = document.getElementById("prompt_container");
     let prompt_input = document.getElementById("prompt_input");
 
     /* Check combinations of key presses */
+    // Note, around the second character on the second and fourth rows, a slight shift in translation
+    // will occur. This is because of an automatic adjustment made by the scrollHeight of the prompt input.
 
     // If the Enter key is pressed without shift, this does not indicate a newline, and thus will submit the prompt.
     if (keys_pressed["Enter"] && !keys_pressed["Shift"]) {
@@ -13,11 +16,14 @@ function checkPromptArea() {
     else if (keys_pressed["Backspace"]) {
         prompt_input.setAttribute("style", "height: 0;");
         prompt_input.setAttribute("style", `height: ${Math.min(151, prompt_input.scrollHeight + 3)}px;`);
+        // prompt_container.setAttribute("style", `bottom: ${prompt_container_bottom}px;`);
+        prompt_container.setAttribute("style", `transform: translate(-50%, -${prompt_input.clientHeight - prompt_container_initHeight}px);`);
     }
 
     if (prompt_input.scrollHeight < 151) {  // Will grow the height of the input box up to a particular height
+        // Thanks https://stackoverflow.com/questions/2803880/is-there-a-way-to-get-a-textarea-to-stretch-to-fit-its-content-without-using-php for the stretching idea.
         prompt_input.setAttribute("style", `height: ${prompt_input.scrollHeight + 3}px;`);
-
+        prompt_container.setAttribute("style", `transform: translate(-50%, -${prompt_input.clientHeight - prompt_container_initHeight}px);`);
     }
 
     prompt_input.scrollTop = prompt_input.scrollHeight;  // Ensure that the text area scroller is always at the bottom

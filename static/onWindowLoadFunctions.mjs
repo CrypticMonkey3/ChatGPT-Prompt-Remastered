@@ -1,4 +1,5 @@
 let keys_pressed = {};  // Inspired by https://medium.com/@rushikesh1s/detect-single-and-multiple-keypress-events-in-javascript-ad2164dbddb3
+let prompt_container_initHeight;
 
 
 window.onload = async function() {
@@ -29,4 +30,6 @@ window.onload = async function() {
         {"parameter": "temperature"},
         function(temp) {gaugeDrag(temp); setGaugeHandle(temp);}
     )
+
+    prompt_container_initHeight = Math.round(document.getElementById("prompt_container").getBoundingClientRect()["height"]);
 }
