@@ -74,8 +74,12 @@ ChatGPT Remastered
             <div id="chat_sidebar"></div>
             <div id="chat_body">
                 <div id="prompt_container">
-                    <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" cols="auto" oninput="checkPromptArea();"></textarea>
-<!--                    <input id="prompt_input" type="text" placeholder="Message ChatGPT">-->
+                    <div id="prompt_input_container">
+                        <div id="input_hider"></div>
+                        <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" cols="auto" oninput="checkPromptArea()"></textarea>
+                    </div>
+                    <!-- Thanks https://stackoverflow.com/questions/2803880/is-there-a-way-to-get-a-textarea-to-stretch-to-fit-its-content-without-using-php for the stretching idea. -->
+<!--                    <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" cols="auto" oninput='this.style.height = ""; this.style.height = this.scrollHeight + 3 + "px"'></textarea>-->
                     <button id="submit_prompt_input" type="button"></button>
                     <span id="prompt_pop_up">Please select a model</span>
                 </div>

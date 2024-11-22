@@ -1,7 +1,17 @@
+let keys_pressed = {};  // Inspired by https://medium.com/@rushikesh1s/detect-single-and-multiple-keypress-events-in-javascript-ad2164dbddb3
+
+
 window.onload = async function() {
     // When the page loads with this javaScript function, add an event listener to the prompt.
-    document.getElementById("prompt_input").addEventListener("keyup", submitPrompt);
-    document.getElementById("submit_prompt_input").addEventListener("mousedown", submitPrompt);
+    document.getElementById("prompt_input").addEventListener("keydown", function(event) {
+        keys_pressed[event.key] = true;
+    })
+    document.getElementById("prompt_input").addEventListener("keyup", function(event) {
+        delete keys_pressed[event.key];
+    });
+
+    document.getElementById("prompt_input").value = "";
+    document.getElementById("submit_prompt_input").addEventListener("mouseup", submitPrompt);
 
     // When the window loads up, fetch and create elements of available options to choose from.
     fetchModelOptions("modelSelection");

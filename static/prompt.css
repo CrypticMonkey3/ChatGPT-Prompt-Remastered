@@ -11,6 +11,28 @@
     transition: top 1.5s ease 0s;
 }
 
+#prompt_input_container {
+    display: flex;
+    align-items: flex-end;  /* Forces elements to sit at the bottom, so any height manipulation would be going upwards */
+    background-color: #64606b;
+
+    /* Get the same styling as the actual prompt input */
+    height: inherit;
+    border-radius: 20px;
+}
+
+#input_hider {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    border-radius: inherit;
+
+    background-image: linear-gradient(to bottom, #64606b, transparent 15%);
+    z-index: 2;
+    pointer-events: none;
+}
+
 #prompt_input {
     position: relative;
     width: 100%;
@@ -22,22 +44,26 @@
     z-index: 1;
     transition: box-shadow linear 1s;
     border: 2px outset #111111;
-    background-color: #64606b;
+    background-color: transparent;  /* Takes the parent container's colour. */
     color: #ffffff;
     font-family: inherit;
     resize: none;
     font-size: 15px;
+    direction: rtl;
+    text-align: left;
 }
+
+/*#prompt_input ::-webkit-scrollbar {*/
+/*    direction:rtl;*/
+/*}*/
 
 #prompt_container ::placeholder{
     color: white;
     opacity: 0.75;
 }
 
-#prompt_input:hover {
-    border-color: rgb(13, 10, 63);
-    box-shadow: 0 0 10px #380d65;
-    transition: box-shadow linear 0.3s;
+#prompt_input_container:hover {
+
 }
 
 #submit_prompt_input {
@@ -46,8 +72,8 @@
     width: 35px;
     height: 35px;
     transform: translateY(-50%);
-    right: 3%;
-    bottom: -10px;
+    right: 1.75%;
+    bottom: -11px;
     z-index: 2;
     background-image: url(Arrow.png);
     background-color: #434047;  /* Same as sidebar opener and closer */
@@ -65,7 +91,7 @@
 #prompt_pop_up {
     position: absolute;
     left: 50%;
-    top: -53%;
+    top: 0;
     display: inline-block;
     transform: translateX(-50%);
     background-color: #542523;
@@ -80,5 +106,5 @@
 
 #prompt_pop_up.show {  /* When the show class is toggled on the following will be applied */
     opacity: 1;
-    top: -50px;
+    top: -26px;
 }

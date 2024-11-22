@@ -1,24 +1,44 @@
+let total_rows = 1;
+
 
 function checkPromptArea() {
     console.log(document.getElementById("prompt_input").value);
     console.log(document.getElementById("prompt_input").getBoundingClientRect()["width"]);
+
+    let rows = 1;
+
+
+    'this.style.height = ""; this.style.height = this.scrollHeight + 3 + "px"'
+
+    let x = document.getElementById("prompt_input");
+
+    if (x.clientHeight <= 150) {
+        x.setAttribute("style", "height: 0;");
+        x.setAttribute("style", `height: ${x.scrollHeight + 3}px;`);
+        return;
+    }
+
+
+    console.log(x.clientHeight);
+    // if (x.height )
+
 }
 
 
 /**
 * Function for when anyone presses 'ENTER' in the prompt, or clicks the submit button.
-* @param {event} event Key event to capture
+* @param {event|null} event Will hold any mouseup events.
 * @return {null} nothing
 */
 function submitPrompt(event) {
-    const prompt_value = document.getElementById("prompt_input").value;
+    let prompt_input = document.getElementById("prompt_input");
 
     /* Checking several things before posting the prompt:
     *       - If the event was a key press and that key press was ENTER
     *       - OR if the event was a click on the submit button
     *       - ALL THE WHILE checking that the prompt is not empty
     */
-    if (((event["type"] === "keyup" && event["key"] === "Enter") || event["type"] === "mousedown") && prompt_value !== "") {
+    if (((event["type"] === "keyup" && event["key"] === "Enter") || event["type"] === "mousedown") && prompt_input.value !== "") {
         // make another check separate to the input which checks if a model has been selected.
         if (document.getElementById("modelDropdown").innerHTML !== "Choose a model") {
             postPrompt();
@@ -27,6 +47,11 @@ function submitPrompt(event) {
 
         // create a pop-up to encourage the user to select a model.
         document.getElementById("prompt_pop_up").classList.add("show");
+    }
+
+    // Checks whether the user entered something made the textarea move to a new line.
+    else if (event["type"] === "keyup" && prompt_input.scrollHeight !== prompt_input.clientHeight) {
+        prompt_input.rows = Math.min(prompt_input.rows + 1, 5);
     }
 }
 
