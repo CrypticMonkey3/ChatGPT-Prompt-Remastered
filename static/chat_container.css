@@ -21,9 +21,9 @@
     border: 1px outset rgba(255, 255, 255, 0.18);
     border-radius: 10px;
     padding: 7px 14px 7px 14px;
-    display: flex;
+    display: grid;
     position: relative;
-    direction:ltr;
+    direction: ltr;
     cursor: pointer;
 }
 
@@ -53,6 +53,8 @@
     width: 40px;
     height: 18px;  /* The same height as the text in the 'message_reference' */
     pointer-events: none;  /* This element has no events on click, so any clicks on it pass through it to the underlying element */
+    top: 50%;
+    transform: translateY(-50%);
 }
 
 #chat_body {
@@ -100,6 +102,7 @@
     border-radius: 10px;
     padding: 8px 11px 8px 12px;
     color: #cccccc;
+    word-break: break-all;
 }
 
 .user_prompt span {
