@@ -1,5 +1,6 @@
-
-
+/**
+ * Oninput checks the prompt area for particular key presses and acts appropriately to them.
+ */
 function checkPromptArea() {
     let prompt_container = document.getElementById("prompt_container");
     let prompt_input = document.getElementById("prompt_input");
@@ -10,14 +11,14 @@ function checkPromptArea() {
 
     // If the Enter key is pressed without shift, this does not indicate a newline, and thus will submit the prompt.
     if (keys_pressed["Enter"] && !keys_pressed["Shift"]) {
+        prompt_input.setAttribute("style", `height: ${prompt_container_initHeight}px;`);  // reset prompt height
         submitPrompt();
     }
 
     else if (keys_pressed["Backspace"]) {
         prompt_input.setAttribute("style", "height: 0;");
-        prompt_input.setAttribute("style", `height: ${Math.min(151, prompt_input.scrollHeight + 3)}px;`);
-        // prompt_container.setAttribute("style", `bottom: ${prompt_container_bottom}px;`);
-        prompt_container.setAttribute("style", `transform: translate(-50%, -${prompt_input.clientHeight - prompt_container_initHeight}px);`);
+        prompt_input.setAttribute("style", `height: ${Math.min(151, prompt_input.scrollHeight + 3)}px;`);  // Change the height of the prompt to a particular size, and capping if it gets over 151.
+        prompt_container.setAttribute("style", `transform: translate(-50%, -${prompt_input.clientHeight - prompt_container_initHeight}px);`);  // Translates the position of the prompt container to make it seem like every newline goes upwards.
     }
 
     if (prompt_input.scrollHeight < 151) {  // Will grow the height of the input box up to a particular height
@@ -165,9 +166,10 @@ async function postPrompt() {
     }
 
     displayMessage("user_prompt", prompt_value, chat_area);
+    scrollBottom(chat_area);
 
     if (document.getElementById("prompt_container").style.top === "") {  // if the prompt hasn't moved from the starting position
-        document.getElementById("prompt_container").setAttribute("style", "top: 91.5%");  // move the container down.
+        document.getElementById("prompt_container").classList.add("move");
     }
 
     document.getElementById("prompt_input").value = "";
@@ -178,13 +180,5 @@ async function postPrompt() {
         updateChat, chat_area, prompt_value
     );
 
-
-    // Ensure that if the vertical scroll is active, that it's at the bottom.
-    if (chat_area.scrollHeight > chat_area.clientHeight) {  // clientHeight is the height of the div, scrollHeight is the height of the overflow.
-        chat_area.scrollTop = chat_area.scrollHeight;
-
-        if (chat_area.getAttribute("style") === null) {  // Add a bottom border if the response has exceeded the chat display.
-            chat_area.setAttribute("style", "border-bottom: 2px solid; border-image: linear-gradient(to right, transparent 10%, black 50%, transparent 90%, transparent) 100% 1;")
-        }
-    }
+    scrollBottom(chat_area);
 }

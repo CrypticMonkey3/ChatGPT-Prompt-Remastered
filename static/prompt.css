@@ -3,12 +3,17 @@
 }
 
 #prompt_container {
-    position: relative;
+    position: absolute;
     top: 50%;
     width: 50%;
     left: 50%;
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
     transition: top 1.5s ease 0s;
+    z-index: 1;  /* Moves it in front of anything it may overlap */
+}
+
+#prompt_container.move {
+    top: 85.5%;  /* New position to move the prompt container to */
 }
 
 #prompt_input_container {

@@ -46,7 +46,7 @@
     color: #ffffff;
 }
 
-#chat_sidebar .reference_end{
+#chat_sidebar .reference_end {
     position: absolute;  /* Is absolute to the reference block class - which allows overlaps */
     background-image: linear-gradient(to right, transparent, #141316);
     right: 8px;
@@ -63,6 +63,7 @@
     background-color: rgba(0, 0, 0, 0.1);
     background-image: url(robot_silhouette_black_and_white.png);
     background-repeat: repeat;
+    position: relative;
 }
 
 #chat_body span#hallucination_warning {
@@ -71,7 +72,7 @@
     left: 50%;
     transform: translateX(-50%);  /* Moves an element left by 50% of ITSELF */
     color: #9b9a9a;
-    bottom: -9.4%;
+    bottom: -11.4%;
 }
 
 #chat_display {
