@@ -59,7 +59,7 @@ ChatGPT Remastered
                             <div id="responseStyleOption" class="tuningOption">
                                 <p class="optionTitle">Response Style</p>
                                 <p class="optionDescription">A type of mannerism the model will try to imitate.</p>
-                                <textarea id="responseStyleInput" rows="1"></textarea>
+                                <textarea id="responseStyleInput" rows="1" oninput="this.style.height=''; this.style.height=this.scrollHeight + 'px';"></textarea>
                                 <div id="responseStyleConfirmation">
                                     <button type="button" id="apply_response_style">Apply</button>
                                     <button type="button" id="cancel_response_style">Cancel</button>

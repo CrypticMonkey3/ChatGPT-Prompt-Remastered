@@ -75,6 +75,7 @@
     border: 1px solid #000000;
     padding: 2px 7px;
     color: #e7e7e7;
+    overflow-y: hidden;
 }
 
 #responseStyleConfirmation {
