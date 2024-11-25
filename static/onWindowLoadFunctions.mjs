@@ -1,5 +1,6 @@
 let keys_pressed = {};  // Inspired by https://medium.com/@rushikesh1s/detect-single-and-multiple-keypress-events-in-javascript-ad2164dbddb3
 let prompt_container_initHeight;
+let current_response_style;
 
 
 window.onload = async function() {
@@ -32,4 +33,14 @@ window.onload = async function() {
     )
 
     prompt_container_initHeight = Math.round(document.getElementById("prompt_container").getBoundingClientRect()["height"]);
+
+    // add the currently stored response style and add it as the value of the response style text area.
+    await bodiedFetch(
+        "/get-parameter-value",
+        {"parameter": "response style"},
+        function(response_style) {
+            document.getElementById("responseStyleConfirmation").classList.add("hide");
+            current_response_style = response_style;
+        }
+    )
 }

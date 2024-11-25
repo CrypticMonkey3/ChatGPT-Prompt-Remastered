@@ -16,6 +16,7 @@
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='onWindowLoadFunctions.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='temperatureGauge.mjs') }}"></script>
     <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='CommonFunctions.mjs') }}"></script>
+    <script type="text/javascript" lang="javascript" src="{{ url_for('static', filename='responseStylePrompt.mjs') }}"></script>
 {% endblock scripts %}
 
 {% block title %}
@@ -41,7 +42,11 @@ ChatGPT Remastered
                 </li>
                 <li>
                     <div id="modelTuningSelector">
-                        <button id="modelTuningDropdown" type="button" onclick="toggleSelection('modelTuningSelection');">Tuning</button>
+                        <!-- When the user opens the dropdown:
+                             It toggles the selection
+                             Adds the response style into the textarea, it's done like this so the textarea's border can be flush around it.
+                        -->
+                        <button id="modelTuningDropdown" type="button" onclick="toggleSelection('modelTuningSelection'); checkResponseStyleArea(current_response_style);">Tuning</button>
                         <!-- Contain a list of adjustable hyperparameters -->
                         <div id="modelTuningSelection">
                             <div id="temperatureOption" class="tuningOption">
@@ -59,10 +64,10 @@ ChatGPT Remastered
                             <div id="responseStyleOption" class="tuningOption">
                                 <p class="optionTitle">Response Style</p>
                                 <p class="optionDescription">A type of mannerism the model will try to imitate.</p>
-                                <textarea id="responseStyleInput" rows="1" oninput="this.style.height=''; this.style.height=this.scrollHeight + 'px';"></textarea>
+                                <textarea id="responseStyleInput" rows="1" oninput="checkResponseStyleArea();"></textarea>
                                 <div id="responseStyleConfirmation">
-                                    <button type="button" id="apply_response_style">Apply</button>
-                                    <button type="button" id="cancel_response_style">Cancel</button>
+                                    <button type="button" id="apply_response_style" onclick="applyResponseStyle();">Apply</button>
+                                    <button type="button" id="cancel_response_style" onclick="checkResponseStyleArea(current_response_style);">Cancel</button>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +81,7 @@ ChatGPT Remastered
                 <div id="prompt_container">
                     <div id="prompt_input_container">
                         <div id="input_hider"></div>
-                        <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" oninput="checkPromptArea()"></textarea>
+                        <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" oninput="checkPromptArea();"></textarea>
                     </div>
 
                     <button id="submit_prompt_input" type="button"></button>

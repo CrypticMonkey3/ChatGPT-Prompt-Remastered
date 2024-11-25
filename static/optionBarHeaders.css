@@ -76,16 +76,19 @@
     padding: 2px 7px;
     color: #e7e7e7;
     overflow-y: hidden;
+    height: auto;
 }
 
 #responseStyleConfirmation {
-    /* Make it invisible to the user */
-    height: 0;
-    transform: scaleY(0%);
-
     /* Displays contents to the left side of the flex container */
     display: flex;
     flex-direction: row-reverse;
+}
+
+#responseStyleConfirmation.hide {
+    /* Make it invisible to the user */
+    height: 0;
+    transform: scaleY(0%);
 }
 
 #modelTuningSelection button {
