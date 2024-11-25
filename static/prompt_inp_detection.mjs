@@ -153,6 +153,21 @@ function updateChat(response, ...args) {
 
 
 /**
+ * Ensures that if the vertical scroll is active, it will be positioned at the bottom.
+ * @param {HTMLElement} element_area The element to check at.
+ */
+function scrollBottom(element_area) {
+    if (element_area.scrollHeight > element_area.clientHeight) {  // clientHeight is the height of the div, scrollHeight is the height of the overflow.
+        element_area.scrollTop = element_area.scrollHeight;
+
+        if (element_area.getAttribute("style") === null) {  // Add a bottom border if the response has exceeded the chat display.
+            element_area.setAttribute("style", "border-bottom: 2px solid; border-image: linear-gradient(to right, transparent 10%, black 50%, transparent 90%, transparent) 100% 1;")
+        }
+    }
+}
+
+
+/**
 * Executes a POST request to /prompt-response function in pages.py containing whatever value was in the prompt.
 * @return {null} nothing
 */

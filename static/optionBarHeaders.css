@@ -48,20 +48,47 @@
 }
 
 #modelSelection div, #modelTuningSelection button {
-    margin: 5px 10px;
     position: relative;
-    border-radius: 17px;
-    border: 2px solid #727272;
     padding: 7px 10px 7px 10px;
     text-align: left;
-    background-color: rgba(51, 49, 49, 0.5);
     color: #cccccc;
     cursor: pointer;
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
 }
 
-#modelSelection div:hover {
+#modelSelection div {
+    margin: 5px 10px;
+    border-radius: 17px;
+    border: 2px solid #727272;
+    background-color: rgba(51, 49, 49, 0.5);
+}
+
+#modelSelection div:hover, #modelTuningSelection #cancel_response_style:hover {
     background-color: rgba(94, 91, 91, 0.5);
+}
+
+#responseStyleConfirmation {
+    visibility: collapse;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#modelTuningSelection button {
+    margin: 5px 2px 0 2px;
+    border-radius: 10px;
+    border: 1px solid #727272;
+}
+
+#modelTuningSelection #cancel_response_style {
+    background-color: rgba(51, 49, 49, 0.5);
+}
+
+#modelTuningSelection #apply_response_style {
+    background-color: rgba(55, 80, 59, 0.5);
+}
+
+#modelTuningSelection #apply_response_style:hover {
+    background-color: rgba(32, 148, 53, 0.5)
 }
 
 .tuningOption {
