@@ -47,18 +47,21 @@
     visibility: collapse;
 }
 
-#modelSelection button, #modelTuningSelection button {
+#modelSelection div, #modelTuningSelection button {
     margin: 5px 10px;
     position: relative;
     border-radius: 17px;
-    border-color: #727272;
-    border-style: solid;
+    border: 2px solid #727272;
     padding: 7px 10px 7px 10px;
     text-align: left;
     background-color: rgba(51, 49, 49, 0.5);
     color: #cccccc;
     cursor: pointer;
     direction: ltr;  /* Specifies text and layouts to be on the left- this is primarily for scrollbar. */
+}
+
+#modelSelection div:hover {
+    background-color: rgba(94, 91, 91, 0.5);
 }
 
 .tuningOption {
@@ -96,33 +99,36 @@
     z-index: 1;  /* So the element can be in front of the images. */
 }
 
+#temperatureOption #SunBurstBackground {
+    right: 0;
+}
+
 #temperatureOption #SnowflakesBackground, #temperatureOption #SunBurstBackground {
     position: absolute;
     z-index: 0;
+    height: 75%;
+    width: 50%;
 }
 
 #temperatureOption #SnowflakesBackground #snowflake1 {
-    height: 70px;
-    width: auto;  /* Image dimensions in the x and y are both the same */
-    left: -29px;
-    top: -23px;
+    left: -15%;
+    top: -14%;
     position: relative;
+    height: 100%;
 }
 
 #temperatureOption #SnowflakesBackground #snowflake2 {
-    height: 36px;
-    width: auto;
-    left: -55px;
-    top: 1px;
+    left: 31%;
+    top: -32%;
     position: relative;
+    height: 50%;
 }
 
 #temperatureOption #SunBurstBackground #sunburst {
-    height: 70px;
     width: auto;
-    right: -128px;
-    top: -5px;
     position: relative;
+    height: 100%;
+    left: 50%;
 }
 
 #modelSelection button:hover, #modelTuningSelection button:hover {

@@ -4,7 +4,7 @@
  */
 async function optionClick() {
     // change the parent innerHTML to be equivalent to the chosen models name.
-    let chosen_model = this.innerHTML.split("<br>")[0]
+    let chosen_model = this.innerText.split("\n")[0];
     this.parentNode.parentNode.children[0].innerHTML = chosen_model;
 
     // Close the selection.
@@ -30,10 +30,19 @@ async function optionClick() {
 function createOption(option_name, option_description, parent_element) {
     let doc_frag = document.createDocumentFragment();
 
-    let button_element = document.createElement("button");
-    button_element.innerHTML = option_name + "<br  />" + option_description;
-    button_element.type = "button";
+    let button_element = document.createElement("div");
     button_element.onclick = optionClick;
+
+    let optionTitle = document.createElement("p");
+    optionTitle.innerText = option_name;
+    optionTitle.className = "optionTitle";
+
+    let optionDescription = document.createElement("p");
+    optionDescription.innerText = option_description;
+    optionDescription.className = "optionDescription";
+
+    button_element.appendChild(optionTitle);
+    button_element.appendChild(optionDescription);
 
     doc_frag.appendChild(button_element);
     parent_element.appendChild(doc_frag);
@@ -47,7 +56,7 @@ function createOption(option_name, option_description, parent_element) {
  */
 function createModelOptions(options, element_id) {
     let selection = document.getElementById(element_id);
-    let model_arr = options.split(",");
+    let model_arr = options.split("\n");
 
     for (let i = 0; i < model_arr.length; i++) {
         let option = model_arr[i].split('|');

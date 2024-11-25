@@ -11,6 +11,16 @@ Easy-peasy, replace the contents of API_Key.txt with your own API key, then run 
 <br  /><br  />
 - Creates a locally hosted page at: http://localhost:8080
 
+## Future implements
+### Storing Multiple Conversations
+The sidebar that can be opened and closed was designed specifically for this. However, due to the time constraints of the project, this could not be implemented in time.
+
+### Stream Feature
+Similar to how ChatGPT outputs chunks of a response at a time, this was meant to be added in the Tuning Dropdown section.
+
+### Profile
+A profile section that allows you to actively change API Keys, profile picture, and add your own theme to the platform.
+
 ## Features
 ### Input
 This interface only takes in text input. Future implementations may include file reading, image generation.
