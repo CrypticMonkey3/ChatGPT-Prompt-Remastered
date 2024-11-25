@@ -59,7 +59,7 @@ ChatGPT Remastered
                             <div id="responseStyleOption" class="tuningOption">
                                 <p class="optionTitle">Response Style</p>
                                 <p class="optionDescription">A type of mannerism the model will try to imitate.</p>
-                                <input id="responseStyleInput" type="text">
+                                <textarea id="responseStyleInput" rows="1"></textarea>
                                 <div id="responseStyleConfirmation">
                                     <button type="button" id="apply_response_style">Apply</button>
                                     <button type="button" id="cancel_response_style">Cancel</button>
@@ -76,7 +76,7 @@ ChatGPT Remastered
                 <div id="prompt_container">
                     <div id="prompt_input_container">
                         <div id="input_hider"></div>
-                        <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" cols="auto" oninput="checkPromptArea()"></textarea>
+                        <textarea id="prompt_input" placeholder="Message ChatGPT" rows="1" oninput="checkPromptArea()"></textarea>
                     </div>
 
                     <button id="submit_prompt_input" type="button"></button>

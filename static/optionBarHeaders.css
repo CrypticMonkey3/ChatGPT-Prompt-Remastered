@@ -67,8 +67,22 @@
     background-color: rgba(94, 91, 91, 0.5);
 }
 
+#responseStyleOption textarea {
+    resize: none;
+    border-radius: 5px;
+    background-color: #64606b;
+    outline: none;
+    border: 1px solid #000000;
+    padding: 2px 7px;
+    color: #e7e7e7;
+}
+
 #responseStyleConfirmation {
-    visibility: collapse;
+    /* Make it invisible to the user */
+    height: 0;
+    transform: scaleY(0%);
+
+    /* Displays contents to the left side of the flex container */
     display: flex;
     flex-direction: row-reverse;
 }
